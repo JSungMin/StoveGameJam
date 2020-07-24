@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public class InteractController : MonoBehaviour
+public abstract class InteractController : MonoBehaviour, IInteractable
 {
-    public int state = -1;
+    public int interactState = -1;
     [SerializeField]
     private GameObject _actor;
     public Action<GameObject, object[]> onInteractStart;
@@ -14,25 +14,29 @@ public class InteractController : MonoBehaviour
 
     public void Interact(GameObject actor, params object[] objs)
     {
-        if(state == -1)
+        if(interactState == -1)
         {
-            state = 0;
+            interactState = 0;
             _actor = actor;
             onInteractStart?.Invoke(actor, objs);
         }
     }
     public void StopInteract(GameObject actor)
     {
-        if(state >= 0) onInteractEnd?.Invoke(actor);
+        if(interactState >= 0) onInteractEnd?.Invoke(actor);
         actor = null;
-        state = -1;
+        interactState = -1;
     }
     private void Update()
     {
-        if(state >= 0)
+        if(interactState >= 0)
         {
-            state = 1;
+            interactState = 1;
             onInteractUpdate?.Invoke(_actor);
         }
     }
+
+    public abstract void OnInteractStart(GameObject actor, params object[] objs);
+    public abstract void OnInteractUpdate(GameObject actor);
+    public abstract void OnInteractEnd(GameObject actor);
 }
