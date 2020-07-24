@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StopUI : MonoBehaviour
+public class DefaultUI : MonoBehaviour
 {
-    public static StopUI instance;
+    public static DefaultUI instance;
     public bool active = false;
     public GameObject child_background;
 
     private void Awake()
     {
         instance = this;
-        if (child_background.activeSelf != active)
+        if (child_background != null && child_background.activeSelf != active)
             child_background.SetActive(active);
     }
 
@@ -38,7 +36,17 @@ public class StopUI : MonoBehaviour
             child_background.SetActive(false);
         }
     }
-    
+
+    public void OpenScene(string _sceneName)
+    {
+        OpenScene(SceneManager.GetSceneByName(_sceneName).buildIndex);
+    }
+
+    public void OpenScene(int _sceneIdx)
+    {
+        SceneManager.LoadScene(_sceneIdx);
+    }
+
     public void GameStop(bool _stop = false) 
     {
         if(!_stop)
@@ -55,12 +63,12 @@ public class StopUI : MonoBehaviour
 
     public void GameRestart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        OpenScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void GameGoToTitle()
     {
-        SceneManager.LoadScene(0);
+        OpenScene(0);
     }
 
     public void GameEnd()
