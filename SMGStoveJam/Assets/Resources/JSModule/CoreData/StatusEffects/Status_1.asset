@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6d4ebbbbfe92d4597eb624b21887f9, type: 3}
+  m_Name: Status_1
+  m_EditorClassIdentifier: 
+  effectName: 
+  description: 
+  effectIcon: {fileID: 0}
+  statusType: 0
+  level: 0
+  duration: 0
+  influenceCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  influence:
+    elements:
+    - 0
+    - 0
+    - 0
+--- !u!114 &114707069695067738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7843bd3d3cfd84b4e85b0d905046a908, type: 3}
+  m_Name: Infulence
+  m_EditorClassIdentifier: 
+  initialValue:
+  - name: Stat0
+    val: 0
+  - name: Stat1
+    val: 0
+  - name: Stat2
+    val: 0
+  - name: Stat3
+    val: 0
+  - name: Stat4
+    val: 0

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc59bd3a4bad00c40a4d32a79d4bbe89, type: 3}
+  m_Name: Profile_Tama
+  m_EditorClassIdentifier: 
+  actorName: Tama
+  actorNameColor: {r: 0.016019935, g: 0.6792453, b: 0.6730683, a: 1}
+  portraitSet:
+    descs:
+    - name: Tama_Temporary
+      portraitType: 1
+      animation:
+        name: 
+        speedMultiplier: 1
+        animationType: 0
+        frameAnimator: {fileID: 0}
+        spineDataAsset: {fileID: 0}
+      sprite: {fileID: 21300000, guid: c9b6a9e92b0a67c448eb2f615b76d874, type: 3}
+      flagFoldoutDesc: 1
+  HP:
+    defGauge: 100
+    curGauge: 100
+  MP:
+    defGauge: 100
+    curGauge: 100
+  Chegan:
+    defGauge: 0
+    curGauge: 0
+  basicStat:
+    elements:
+    - 5
+    - 5
+    - 0
+    - 0
+    - 0
+  additionalStat:
+    elements:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+  skills:
+    elements:
+    - {fileID: 11400000, guid: 3536221ff0b69384b95196b7224697a6, type: 2}
+    - {fileID: 11400000, guid: 0ad72fa46b3526a4e98e195aa76a4614, type: 2}
+    - {fileID: 11400000, guid: b9689158fa234394da68a00048236367, type: 2}
+    - {fileID: 11400000, guid: 33f748f3afbf2c042b03c14a6a53bd65, type: 2}
+    - {fileID: 11400000, guid: 87a9990e60598ee418aff007d2d08663, type: 2}
+    - {fileID: 11400000, guid: fa577d6246fbf584dbd25a412c489d7c, type: 2}
+  inventory:
+    elements: []
+    money: 0
+  equipment:
+    elements:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  description: 

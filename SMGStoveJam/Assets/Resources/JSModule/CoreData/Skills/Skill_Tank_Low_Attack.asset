@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742ff45fde8ad3e448b894ea183833b4, type: 3}
+  m_Name: Skill_Tank_Low_Attack
+  m_EditorClassIdentifier: 
+  skillName: Tank_Low_Attack
+  skillIcon: {fileID: 0}
+  description: 
+  skillType: 0
+  skillCoverageType: 3
+  animationDesc:
+    name: LowAttack1
+    speedMultiplier: 1
+    animationType: 1
+    frameAnimator: {fileID: 0}
+    spineDataAsset: {fileID: 0}
+  soundEffects:
+    trySound: {fileID: 0}
+    successSound: {fileID: 0}
+    failSound: {fileID: 0}
+  useFX: {fileID: 0}
+  successFX: {fileID: 0}
+  isGroundSkill: 1
+  isGlobalSkill: 0
+  physDmg: 15
+  magicDmg: 0
+  cheganDmg: 10
+  hpCost: 0
+  mpCost: 0
+  coolTime: 5
+  knockBack: 0
+  knockUp: 10
+  knockTime: 0.5
+  statusEffects: []
