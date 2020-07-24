@@ -2,28 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractable
-{
-    void OnInteractStart(GameObject actor, params object[] objs);
-    void OnInteractUpdate(GameObject actor);
-    void OnInteractEnd(GameObject actor);
-}
-
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-public class CanGrabObject : InteractController
+public class CanGrabObject : InteractObject
 {
     protected Rigidbody rigid;
     protected Collider col;
     protected Transform curPivot = null;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         rigid = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
-        onInteractStart += OnInteractStart;
-        onInteractUpdate += OnInteractUpdate;
-        onInteractEnd += OnInteractEnd;
     }
     public override void OnInteractStart(GameObject actor, params object[] objs)
     {
@@ -32,6 +22,7 @@ public class CanGrabObject : InteractController
         else
             curPivot = actor.transform;
         transform.SetParent(curPivot.transform);
+        transform.localPosition = Vector3.zero;
         rigid.velocity = Vector3.zero;
         rigid.Sleep();
     }

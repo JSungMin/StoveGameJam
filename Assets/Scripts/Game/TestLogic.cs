@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestLogic : MonoBehaviour
 {
-    public InteractController box;
+    public InteractObject box;
     // Start is called before the first frame update
     void Start()
     {

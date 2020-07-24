@@ -2,8 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-public abstract class InteractController : MonoBehaviour, IInteractable
+
+public interface IInteractable
+{
+    void OnInteractStart(GameObject actor, params object[] objs);
+    void OnInteractUpdate(GameObject actor);
+    void OnInteractEnd(GameObject actor);
+}
+public abstract class InteractObject : MonoBehaviour, IInteractable
 {
     public int interactState = -1;
     [SerializeField]
@@ -26,6 +32,12 @@ public abstract class InteractController : MonoBehaviour, IInteractable
         if(interactState >= 0) onInteractEnd?.Invoke(actor);
         actor = null;
         interactState = -1;
+    }
+    protected virtual void Start() 
+    {
+        onInteractStart += OnInteractStart;
+        onInteractUpdate += OnInteractUpdate;
+        onInteractEnd += OnInteractEnd;
     }
     private void Update()
     {
