@@ -11,7 +11,6 @@ namespace CoreSystem.Game
         {
             { "Player_Ground_Attack_01", typeof(PlayerGroundAttack01) },
             { "Player_Ground_Attack_02", typeof(PlayerGroundAttack02) },
-            { "Player_Roll", typeof(PlayerRoll) },
             { "Player_High_Parry", typeof(PlayerHighParry)},
             { "Player_Middle_Parry", typeof(PlayerMiddleParry)},
             { "Player_Low_Parry", typeof(PlayerLowParry)},
