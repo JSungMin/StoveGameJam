@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public Grapping Grapping;
     public Transform GrapObject;
     public UnityEvent moveEvent, stopEvent, jumpEvent;
-    public UnityEvent grabEvent, dropEvent;
+    public UnityEvent grabEvent, dropEvent, hammerEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
         MoveController.onStop += OnStop;
         MoveController.onJump += OnJump;
 
+        Hammering.onHammering += OnHammering;
         Grapping.onGrab += OnGrab;
         Grapping.onDrop += OnDrop;
 
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     }
     private void OnMove()
     {
+        SoundManager.instance.PlayStepSound();
         if (Input.GetAxis("Horizontal") > 0)
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         else if (Input.GetAxis("Horizontal") < 0)
@@ -67,6 +69,8 @@ public class Player : MonoBehaviour
     }
     private void OnJump()
     {
+        
+        SoundManager.instance.PlayJumpSound();
         jumpEvent?.Invoke();
     }
     private void OnGrab(CanGrabObject obj)
@@ -78,6 +82,11 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("Grabbing", false);
         dropEvent?.Invoke();
+    }
+    private void OnHammering()
+    {
+        SoundManager.instance.PlayHammerSound();
+        hammerEvent?.Invoke();
     }
     private void OnCut(CanCutObject obj)
     {

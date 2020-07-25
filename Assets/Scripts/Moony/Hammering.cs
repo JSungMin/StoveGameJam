@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Hammering : MonoBehaviour
 {
     public Player Player;
-
+    public Action onHammering;
     public Animator animator;
     public float HammeringTime = 0.4f;
     private float CoTime;
@@ -26,7 +27,7 @@ public class Hammering : MonoBehaviour
         boxIndex = 1;
         if (Input.GetKeyDown(KeyCode.Space) && !animator.GetBool("Grabbing"))
         {
-            
+            onHammering?.Invoke();
             CoTime = HammeringTime;
             animator.SetTrigger("Hammer_trig");
             //StartCoroutine("Hammer");
