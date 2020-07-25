@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -16,10 +17,7 @@ public class MoveController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
     }
-    void Start()
-    {
-
-    }
+    
     private void Update()
     {
         if (controller.isGrounded)
@@ -28,10 +26,7 @@ public class MoveController : MonoBehaviour
             {
                 JumpKey = true;
             }
-
         }
-
-
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -52,5 +47,10 @@ public class MoveController : MonoBehaviour
 
         Direction.y -= gravity * Time.deltaTime;
         controller.Move(Direction * Time.deltaTime);
+    }
+
+    void SpringJump(Vector3 SpringPower)
+    {
+        Direction += SpringPower;
     }
 }
