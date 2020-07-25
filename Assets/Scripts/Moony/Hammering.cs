@@ -24,7 +24,7 @@ public class Hammering : MonoBehaviour
     void Update()
     {
         boxIndex = 1;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !animator.GetBool("Grabbing"))
         {
             
             CoTime = HammeringTime;
@@ -46,21 +46,21 @@ public class Hammering : MonoBehaviour
         }
         
     }
-    IEnumerator Hammer()
-    {
-        Collider[] colliderArray = Physics.OverlapBox(transform.position + new Vector3(1.0f, 0.0f, 0.0f), new Vector3(1.0f, 1.0f, 0f), transform.rotation);
-        while (CoTime > 0)
-        {
-            for (int i = 0; i < colliderArray.Length; i++)
-            {
-                if(colliderArray[i].CompareTag("Spring"))
-                    colliderArray[i].SendMessage("OnHammering", Player);
-            }
-            CoTime -= 0.1f;
-            Debug.Log("Hammered");
-            yield return new WaitForSeconds(0.1f);
-        }
-        animator.SetBool("Hammer", false);
+    // IEnumerator Hammer()
+    // {
+    //     Collider[] colliderArray = Physics.OverlapBox(transform.position + new Vector3(1.0f, 0.0f, 0.0f), new Vector3(1.0f, 1.0f, 0f), transform.rotation);
+    //     while (CoTime > 0)
+    //     {
+    //         for (int i = 0; i < colliderArray.Length; i++)
+    //         {
+    //             if(colliderArray[i].CompareTag("Spring"))
+    //                 colliderArray[i].SendMessage("OnHammering", Player);
+    //         }
+    //         CoTime -= 0.1f;
+    //         Debug.Log("Hammered");
+    //         yield return new WaitForSeconds(0.1f);
+    //     }
+    //     animator.SetBool("Hammer", false);
         
-    }
+    // }
 }
