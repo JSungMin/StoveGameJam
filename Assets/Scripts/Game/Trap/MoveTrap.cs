@@ -9,6 +9,7 @@ public class MoveTrap : BaseTrap
     public float timer = 0f;
     public Transform[] points;
     public int pointIdx = 0;
+    
     private BehaviourJob moveJob;
     
     private void Start()
