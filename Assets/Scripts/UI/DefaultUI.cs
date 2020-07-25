@@ -26,15 +26,14 @@ public class DefaultUI : MonoBehaviour
     public void StopUIActive(bool _true = true)
     {
         active = _true;
-        if (_true)
-        {
-            GameStop();
-            child_background.SetActive(true);
-        }
-        else if (!_true){
-            GameStop(false);
-            child_background.SetActive(false);
-        }
+        GameStop(active);
+        child_background.SetActive(active);
+    }
+
+    public void StopUINone()
+    {
+        Debug.Log("으아아");
+        StopUIActive(false);
     }
 
     public void OpenScene(string _sceneName)
