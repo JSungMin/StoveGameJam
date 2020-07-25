@@ -32,7 +32,6 @@ public class DefaultUI : MonoBehaviour
 
     public void StopUINone()
     {
-        Debug.Log("으아아");
         StopUIActive(false);
     }
 
