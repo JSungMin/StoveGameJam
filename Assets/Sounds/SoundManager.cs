@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip HammerSound;
+    public AudioClip JumpSound;
     public AudioClip StepSound;
     public AudioClip Spring;
     public AudioClip DoorSound;
@@ -17,15 +18,20 @@ public class SoundManager : MonoBehaviour
             SoundManager.instance = this;
         }
     }
-
+    public void PlayStepSound()
+    {
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(StepSound);
+    }
+    public void PlayJumpSound()
+    {
+        audioSource.PlayOneShot(JumpSound);
+    }
     public void PlayHammerSound()
     {
         audioSource.PlayOneShot(HammerSound);
     }
-    public void PlayStepSound()
-    {
-        audioSource.PlayOneShot(StepSound);
-    }
+    
     public void PlaySpringSound()
     {
         audioSource.PlayOneShot(Spring);

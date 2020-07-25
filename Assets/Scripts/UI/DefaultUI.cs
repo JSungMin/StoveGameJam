@@ -62,11 +62,13 @@ public class DefaultUI : MonoBehaviour
 
     public void GameRestart()
     {
+        Debug.Log("현재의 씬을 다시 엶");
         OpenScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameGoToTitle()
     {
+        Debug.Log("0번째 씬을 엶");
         OpenScene(0);
     }
 
