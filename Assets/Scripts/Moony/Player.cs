@@ -54,7 +54,8 @@ public class Player : MonoBehaviour
     }
     private void OnMove()
     {
-        SoundManager.instance.PlayStepSound();
+        if(SoundManager.instance!=null)
+            SoundManager.instance.PlayStepSound();
         if (Input.GetAxis("Horizontal") > 0)
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         else if (Input.GetAxis("Horizontal") < 0)
@@ -69,8 +70,8 @@ public class Player : MonoBehaviour
     }
     private void OnJump()
     {
-        
-        SoundManager.instance.PlayJumpSound();
+        if (SoundManager.instance != null)
+            SoundManager.instance.PlayJumpSound();
         jumpEvent?.Invoke();
     }
     private void OnGrab(CanGrabObject obj)
@@ -85,7 +86,8 @@ public class Player : MonoBehaviour
     }
     private void OnHammering()
     {
-        SoundManager.instance.PlayHammerSound();
+        if (SoundManager.instance != null)
+            SoundManager.instance.PlayHammerSound();
         hammerEvent?.Invoke();
     }
     private void OnCut(CanCutObject obj)
