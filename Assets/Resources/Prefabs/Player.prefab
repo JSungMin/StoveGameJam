@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2167653339511324223}
   - component: {fileID: 2167653339511324222}
   - component: {fileID: 8367080568117531663}
-  m_Layer: 0
+  - component: {fileID: 996555578}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e644734520b48143b2476115a28c8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   speed: 10
   AerialSlowDown: 0.5
   jumpPower: 10
@@ -86,6 +88,7 @@ MonoBehaviour:
   animator: {fileID: 7123251666121965583}
   MoveController: {fileID: 2167653339511324221}
   Hammering: {fileID: 8367080568117531663}
+  Cutting: {fileID: 996555578}
   Grapping: {fileID: 2167653339511324222}
   GrapObject: {fileID: 2167653339643168676}
   moveEvent:
@@ -116,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2167653339511324223}
+  grabbedObject: {fileID: 0}
   distance: 0.5
   ScanningHeight: 0.5
 --- !u!114 &8367080568117531663
@@ -131,7 +135,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2167653339511324223}
+  animator: {fileID: 0}
   HammeringTime: 0.5
+--- !u!114 &996555578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167653339511324215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c5bdac271fb1f4da0f45f7cf5ccf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 2167653339511324223}
+  distance: 0.5
+  ScanningHeight: 0.5
 --- !u!1 &2167653339643168677
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2167653339643168676}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GrabPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +193,7 @@ GameObject:
   - component: {fileID: 7123251666121965581}
   - component: {fileID: 7123251666121965582}
   - component: {fileID: 7123251666121965583}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerAnimator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

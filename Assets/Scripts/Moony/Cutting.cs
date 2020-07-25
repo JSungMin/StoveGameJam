@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grapping : MonoBehaviour
+public class Cutting : MonoBehaviour
 {
     public Player Player;
-    public CanGrabObject grabbedObject;
     public float distance = 0.5f;
     public float ScanningHeight = 0.5f;
-    public Action<CanGrabObject> onGrab, onDrop;
+    public Action<CanCutObject> onCut;
     
-    private bool curgrab = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,30 +26,20 @@ public class Grapping : MonoBehaviour
         Debug.DrawRay(rayPosition, transform.right * ScanningDistance, Color.red);
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Physics.Raycast(rayPosition, transform.right, out hit, ScanningDistance) && !curgrab)
+            if (Physics.Raycast(rayPosition, transform.right, out hit, ScanningDistance))
             {
                 if (hit.collider != null)
                 {
                     Debug.Log(hit.collider.gameObject.name);
-                    grabbedObject = hit.collider.GetComponent<CanGrabObject>();
-                    if (null != grabbedObject && !grabbedObject.isGrab)
+                    var cutObj = hit.collider.GetComponent<CanCutObject>();
+                    if (null != cutObj && !cutObj.isCut)
                     {
-                        grabbedObject.SendMessage("OnGrab", Player);
-                        curgrab = true;
-                        onGrab?.Invoke(grabbedObject);
+                        cutObj.SendMessage("OnCut", Player);
+                        onCut?.Invoke(cutObj);
                         return;
                     }
                 }
             }
-            if(null != grabbedObject && grabbedObject.isGrab)
-            {
-                grabbedObject.SendMessage("OnDrop", Player);
-                curgrab = false;
-                onDrop?.Invoke(grabbedObject);
-                grabbedObject = null;
-            }
         }
-
     }
-    
 }

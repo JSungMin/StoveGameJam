@@ -730,12 +730,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1363956030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1561796887168942465, guid: 5ef823fdcea237b49969c51247462deb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1561796885814464703}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1462959894 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2167653339511324223, guid: df037fa8951d0b74c9de219a4995209e,
@@ -921,92 +915,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2167653339511324214, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: box
-      value: 
-      objectReference: {fileID: 1363956030}
-    - target: {fileID: 2167653339511324214, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: spring
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2167653339511324215, guid: df037fa8951d0b74c9de219a4995209e,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2167653339511324215, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2167653339511324223, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: moveEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2167653339511324223, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: moveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2167653339511324223, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: moveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2167653339511324223, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: moveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2167653339068443448}
-    - target: {fileID: 2167653339511324223, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 2167653339068443447}
-    - target: {fileID: 2167653339511324223, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: Hammering
-      value: 
-      objectReference: {fileID: 2167653339068443446}
-    - target: {fileID: 2167653339643168677, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123251666121965568, guid: df037fa8951d0b74c9de219a4995209e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df037fa8951d0b74c9de219a4995209e, type: 3}
---- !u!114 &2167653339068443446 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8367080568117531663, guid: df037fa8951d0b74c9de219a4995209e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2167653339068443445}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 676e04ca6ac734b4db51f57928d764e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &2167653339068443447 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7123251666121965583, guid: df037fa8951d0b74c9de219a4995209e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2167653339068443445}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2167653339068443448 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7123251666121965568, guid: df037fa8951d0b74c9de219a4995209e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2167653339068443445}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2167653339068443449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2167653339511324210, guid: df037fa8951d0b74c9de219a4995209e,

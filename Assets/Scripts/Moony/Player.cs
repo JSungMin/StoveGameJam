@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public MoveController MoveController;
     public Hammering Hammering;
+    public Cutting Cutting;
     public Grapping Grapping;
     public Transform GrapObject;
     public UnityEvent moveEvent, stopEvent, jumpEvent;
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
 
         Grapping.onGrab += OnGrab;
         Grapping.onDrop += OnDrop;
+
+        Cutting.onCut += OnCut;
     }
 
     // Update is called once per frame
@@ -75,5 +78,9 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("Grabbing", false);
         dropEvent?.Invoke();
+    }
+    private void OnCut(CanCutObject obj)
+    {
+
     }
 }
