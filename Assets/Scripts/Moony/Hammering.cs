@@ -6,23 +6,43 @@ public class Hammering : MonoBehaviour
 {
     public Player Player;
 
-    public float HammeringTime = 0.5f;
+    public Animator animator;
+    public float HammeringTime = 0.4f;
     private float CoTime;
+
+    private int boxIndex;
     // Start is called before the first frame update
     void Start()
     {
         CoTime = HammeringTime;
         Player = GetComponent<Player>();
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        boxIndex = 1;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             
             CoTime = HammeringTime;
-            StartCoroutine("Hammer");
+            animator.SetTrigger("Hammer_trig");
+            //StartCoroutine("Hammer");
+            if(Player.MoveController.GetVelocity.x < 0){
+                boxIndex = -1;
+            }else if(Player.MoveController.GetVelocity.x > 0){
+                boxIndex = 1;
+            }
+            Collider[] colliderArray = Physics.OverlapBox(transform.position + new Vector3(boxIndex, 0.0f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f), Quaternion.identity);
+            for (int i = 0; i < colliderArray.Length; i++)
+            {
+                if(colliderArray[i].CompareTag("Spring"))
+                    colliderArray[i].SendMessage("OnHammering", Player);
+            }
+            Debug.Log("Hammered");
+
         }
         
     }
@@ -40,6 +60,7 @@ public class Hammering : MonoBehaviour
             Debug.Log("Hammered");
             yield return new WaitForSeconds(0.1f);
         }
+        animator.SetBool("Hammer", false);
         
     }
 }
