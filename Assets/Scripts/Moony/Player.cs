@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
     }
     private void OnHammering()
     {
+        
         if (SoundManager.instance != null)
             SoundManager.instance.PlayHammerSound();
         hammerEvent?.Invoke();
