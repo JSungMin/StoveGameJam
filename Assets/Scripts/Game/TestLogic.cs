@@ -6,6 +6,7 @@ public class TestLogic : MonoBehaviour
 {
     public GameObject box;
     public SpringObject spring;
+    public Player player;
     public bool isGrab = false;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,10 @@ public class TestLogic : MonoBehaviour
             else
                 box.SendMessage("OnDrop");
             isGrab = !isGrab;
-        }        
+        }       
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            spring.SendMessage("OnHammering", player);
+        } 
     }
 }

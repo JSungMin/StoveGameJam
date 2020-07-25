@@ -41,14 +41,17 @@ public class CanGrabObject : MonoBehaviour
         transform.localPosition = Vector3.zero;
         rigid.velocity = Vector3.zero;
         rigid.Sleep();
+        col.enabled = false;
         isGrab = true;
     }
     public void OnDrop()
     {
         isGrab = false;
+        transform.SetParent(restoreParent);
         curPivot = null;
         rigid.WakeUp();
-        transform.SetParent(restoreParent);
+        rigid.velocity = Vector3.zero;
+        col.enabled = true;
     }
     private void Update()
     {

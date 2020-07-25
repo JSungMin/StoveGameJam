@@ -27,7 +27,7 @@ public class SpringObject : MonoBehaviour
         {
             isBending = false;
             //  TODO : AddForce To Player
-            
+            player.MoveController.SpringJump(springDir*springPower);
             //  moveCon.AddForce(sprintDir*sprintPower);
         }
         animator.SetBool("IsOverBending", isBending);
