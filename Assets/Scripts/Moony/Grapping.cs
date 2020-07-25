@@ -11,6 +11,7 @@ public class Grapping : MonoBehaviour
     public float ScanningHeight = 0.5f;
     public Action<CanGrabObject> onGrab, onDrop;
     
+    private bool curgrab = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class Grapping : MonoBehaviour
         Debug.DrawRay(rayPosition, transform.right * ScanningDistance, Color.red);
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Physics.Raycast(rayPosition, transform.right, out hit, ScanningDistance))
+            if (Physics.Raycast(rayPosition, transform.right, out hit, ScanningDistance) && !curgrab)
             {
                 if (hit.collider != null)
                 {
@@ -36,6 +37,7 @@ public class Grapping : MonoBehaviour
                     if (!grabbedObject.isGrab)
                     {
                         grabbedObject.SendMessage("OnGrab", Player);
+                        curgrab = true;
                         onGrab?.Invoke(grabbedObject);
                         return;
                     }
@@ -43,7 +45,8 @@ public class Grapping : MonoBehaviour
             }
             if(null != grabbedObject && grabbedObject.isGrab)
             {
-                grabbedObject.SendMessage("OnDrop");
+                grabbedObject.SendMessage("OnDrop", Player);
+                curgrab = false;
                 onDrop?.Invoke(grabbedObject);
                 grabbedObject = null;
             }

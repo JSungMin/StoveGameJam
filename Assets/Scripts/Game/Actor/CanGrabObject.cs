@@ -47,14 +47,26 @@ public class CanGrabObject : MonoBehaviour
         col.isTrigger = true;
         isGrab = true;
     }
-    public void OnDrop()
+    public void OnDrop(Player player)
     {
+        int DropDir = 0;
+        if (player.transform.localRotation.y < 0)
+        {
+            DropDir = -100;
+        }
+        else if (player.transform.localRotation.y >= 0)
+        {
+            DropDir = 100;
+        }
+        
         isGrab = false;
         transform.SetParent(restoreParent);
         curPivot = null;
         rigid.WakeUp();
         rigid.velocity = Vector3.zero;
+        Debug.Log("Drop: " + DropDir.ToString());
         col.isTrigger = false;
+        rigid.AddForce(new Vector3(DropDir, 100f, 0));
     }
     private void FixedUpdate()
     {
