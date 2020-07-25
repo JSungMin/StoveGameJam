@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
+
+    public Player player;
     public float speed = 10.0f;
     public float AerialSlowDown = 0.5f;
     public float jumpPower = 20.0f;
@@ -23,12 +25,15 @@ public class MoveController : MonoBehaviour
         RealSpeed = speed;
         ExtraPower = Vector3.zero;
         controller = GetComponent<CharacterController>();
+        player = GetComponent<Player>();
     }
     
     private void Update()
     {
         if (controller.isGrounded)
         {
+            
+            Direction.y = 0;
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 JumpKey = true;
@@ -38,6 +43,7 @@ public class MoveController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        Debug.Log(Direction.y);
         if (controller.isGrounded)
         {
             RealSpeed = speed;

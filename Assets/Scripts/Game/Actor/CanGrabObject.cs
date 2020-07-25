@@ -41,6 +41,7 @@ public class CanGrabObject : MonoBehaviour
         transform.parent = curPivot;
 
         transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.EulerAngles(new Vector3(0,0,0));
         rigid.velocity = Vector3.zero;
         rigid.Sleep();
         col.isTrigger = true;
