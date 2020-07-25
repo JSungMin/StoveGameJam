@@ -7,7 +7,7 @@ public class DefaultUI : MonoBehaviour
     public bool active = false;
     public GameObject child_background;
 
-    public int gameoverScene = 0;
+    public static int gameoverScene = 0;
 
     private void Awake()
     {
@@ -78,7 +78,7 @@ public class DefaultUI : MonoBehaviour
 
         // 게임 오버로 이동하는 코드
         gameoverScene = SceneManager.GetActiveScene().buildIndex;
-        OpenScene("GameOver");
+        SceneManager.LoadScene("GameOver");
     }
 
     public void GameOverBack()
