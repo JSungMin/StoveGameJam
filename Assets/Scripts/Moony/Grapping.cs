@@ -6,13 +6,10 @@ public class Grapping : MonoBehaviour
 {
     public Player Player;
 
-    public float HammeringTime = 0.5f;
     public float ScanningDistance = 0.5f;
-    private float CoTime;
     // Start is called before the first frame update
     void Start()
     {
-        CoTime = HammeringTime;
         Player = GetComponent<Player>();
     }
 
