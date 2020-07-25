@@ -42,6 +42,7 @@ public class DefaultUI : MonoBehaviour
 
     public void OpenScene(int _sceneIdx)
     {
+        GameStop(false);
         SceneManager.LoadScene(_sceneIdx);
     }
 
@@ -61,7 +62,6 @@ public class DefaultUI : MonoBehaviour
 
     public void GameRestart()
     {
-        GameStop(false);
         OpenScene(SceneManager.GetActiveScene().name);
     }
 
