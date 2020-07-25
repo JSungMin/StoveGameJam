@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5106493848116488323}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trap_Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4457236324584249498}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MovePoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6981461336250814215}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MovePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6981461337169580854}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MovePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6981461337459474883}
   - component: {fileID: 6981461337459474880}
   - component: {fileID: 6981461337459474909}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MoveTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

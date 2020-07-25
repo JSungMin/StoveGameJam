@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class TestLogic : MonoBehaviour
 {
-    public GameObject box;
-    public SpringObject spring;
     public Player player;
-    public bool isGrab = false;
+    public CanCutObject cutObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,19 +15,9 @@ public class TestLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var inputSpace = Input.GetKeyDown(KeyCode.Space);
-        if(inputSpace)
+        if(Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("Space");
-            if(!isGrab)
-                box.SendMessage("OnGrab", CanGrabObject.GetGrabParam(gameObject));
-            else
-                box.SendMessage("OnDrop");
-            isGrab = !isGrab;
-        }       
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            spring.SendMessage("OnHammering", player);
-        } 
+            cutObject.SendMessage("OnCut", player);
+        }
     }
 }

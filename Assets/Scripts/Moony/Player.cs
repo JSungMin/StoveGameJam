@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         MoveController.onMove += OnMove;
         MoveController.onStop += OnStop;
         MoveController.onJump += OnJump;
-    
+
         Grapping.onGrab += OnGrab;
         Grapping.onDrop += OnDrop;
     }
@@ -29,11 +29,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        var debri = hit.gameObject.GetComponent<DebriObject>();
+        bool isNotDebri = (debri == null);
+        //// rigidbody
+        if (!isNotDebri)
+        {
+            //    // Calculate push direction from move direction,
+            //    // we only push objects to the sides never up and down
+            Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+            //    // If you know how fast your character is trying to move,
+            //    // then you can also multiply the push velocity by that.
+            var pushPower = MoveController.GetVelocity.magnitude * 1.25f;
+            // Apply the push
+            debri.rigid.velocity = pushDir * pushPower;
+        }
     }
     private void OnMove()
     {
-        if (Input.GetAxis("Horizontal")>0)
+        if (Input.GetAxis("Horizontal") > 0)
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         else if (Input.GetAxis("Horizontal") < 0)
             transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
