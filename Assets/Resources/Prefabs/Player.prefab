@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2167653339511324210}
-  - component: {fileID: 2167653339511324214}
   - component: {fileID: 2167653339511324221}
   - component: {fileID: 2167653339511324220}
   - component: {fileID: 2167653339511324223}
   - component: {fileID: 2167653339511324222}
+  - component: {fileID: 8367080568117531663}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -37,22 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2167653339511324214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2167653339511324215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320f0d5240745d845aae9587f2d4d3a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  box: {fileID: 0}
-  spring: {fileID: 0}
-  player: {fileID: 2167653339511324223}
-  isGrab: 0
 --- !u!114 &2167653339511324221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   AerialSlowDown: 0.5
-  jumpPower: 20
-  gravity: 20
+  jumpPower: 10
+  gravity: 30
 --- !u!143 &2167653339511324220
 CharacterController:
   m_ObjectHideFlags: 0
@@ -99,9 +83,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7a05280275a9d4faa38b121c2db070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7123251666121965583}
   MoveController: {fileID: 2167653339511324221}
-  Hammering: {fileID: 0}
+  Hammering: {fileID: 8367080568117531663}
+  Grapping: {fileID: 2167653339511324222}
   GrapObject: {fileID: 2167653339643168676}
+  moveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stopEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  jumpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  grabEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  dropEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2167653339511324222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +116,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2167653339511324223}
-  HammeringTime: 0.5
   ScanningDistance: 0.5
+--- !u!114 &8367080568117531663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167653339511324215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676e04ca6ac734b4db51f57928d764e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 2167653339511324223}
+  HammeringTime: 0.5
 --- !u!1 &2167653339643168677
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +234,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ea416b3a0f1a9d4db4c8570fb9076a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5, y: 5}

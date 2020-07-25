@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 
@@ -15,6 +15,8 @@ public class MoveController : MonoBehaviour
     private Vector3 ExtraPower;
     private Vector3 Direction;
     private CharacterController controller;
+
+    public Action onMove, onStop, onJump;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class MoveController : MonoBehaviour
         
         if (JumpKey)
         {
+            onJump?.Invoke();
             Direction.y = jumpPower;
             JumpKey = false;
         }
@@ -59,8 +62,17 @@ public class MoveController : MonoBehaviour
         
         Direction.y -= gravity * Time.deltaTime;
         Direction = transform.TransformDirection(Direction);
+        if(Mathf.Abs(Direction.x)>=0.01f)
+        {
+            onMove?.Invoke();
+        }
+        else
+        {
+            onStop?.Invoke();
+        }
         controller.Move(Direction * Time.deltaTime);
     }
+    public Vector3 GetVelocity => controller.velocity;
 
     public void SpringJump(Vector3 SpringPower)
     {
