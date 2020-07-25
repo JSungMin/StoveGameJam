@@ -48,6 +48,10 @@ public class Grapping : MonoBehaviour
                         onGrab?.Invoke(grabbedObject);
                         return;
                     }
+                    if(hit.transform.CompareTag("Sliceable"))
+                    {
+                        hit.transform.gameObject.SendMessage("Slicing");
+                    }
                 }
             }
             if(null != grabbedObject && grabbedObject.isGrab)
