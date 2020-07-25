@@ -101,7 +101,12 @@ public class ItemSystem : MonoBehaviour
     public bool ItemMake(Item _wantItem, int _ct = 1) // 아이템을 제작합니다.
     {
         bool result = ItemUse(Item.ink, ItemFind(_wantItem).ink_price * _ct);
-        if (result) ItemGet(_wantItem, _ct);
+        if (result)
+        {
+            ItemGet(_wantItem, _ct);
+            if (SoundManager.instance != null)
+                SoundManager.instance.PlayMakeSound();
+        }
         return result;
     }
 

@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip StepSound;
     public AudioClip Spring;
     public AudioClip DoorSound;
+    public AudioClip MakeSound;
     public static SoundManager instance;
     private void Awake()
     {
@@ -39,6 +40,11 @@ public class SoundManager : MonoBehaviour
     public void PlayDoorSound()
     {
         audioSource.PlayOneShot(DoorSound);
+    }
+
+    public void PlayMakeSound()
+    {
+        audioSource.PlayOneShot(MakeSound);
     }
 
 

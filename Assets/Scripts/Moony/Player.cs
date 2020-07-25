@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     }
     private void OnMove()
     {
-        if(SoundManager.instance!=null)
+        if(SoundManager.instance!=null&&MoveController.controller.isGrounded)
             SoundManager.instance.PlayStepSound();
         if (Input.GetAxis("Horizontal") > 0)
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
