@@ -87,8 +87,8 @@ public class ItemSystem : MonoBehaviour
     public bool ItemUse(Item _type, int _ct = 1) // 아이템을 사용합니다. (기본값 : 1개 사용)
     {
         var target = ItemFind(_type);
-        if (target.count < _ct) return false;
-        ItemFind(_type).count -= _ct;
+        if (target == null || target.count < _ct) return false;
+        target.count -= _ct;
         ItemUIObj_Reflash();
         return true;
     }
