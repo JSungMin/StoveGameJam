@@ -61,7 +61,8 @@ public class DefaultUI : MonoBehaviour
 
     public void GameRestart()
     {
-        OpenScene(SceneManager.GetActiveScene().buildIndex);
+        GameStop(false);
+        OpenScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameGoToTitle()
