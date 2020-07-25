@@ -34,10 +34,10 @@ public class Player : MonoBehaviour
     }
     private void OnMove()
     {
-        if(MoveController.GetVelocity.x > 0)
-            animator.transform.localScale = new Vector3(1, 1, 1);
-        else if(MoveController.GetVelocity.x < 0)
-            animator.transform.localScale = new Vector3(-1, 1, 1);
+        if (Input.GetAxis("Horizontal")>0)
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        else if (Input.GetAxis("Horizontal") < 0)
+            transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
         animator.SetBool("Running", true);
         moveEvent?.Invoke();
     }
