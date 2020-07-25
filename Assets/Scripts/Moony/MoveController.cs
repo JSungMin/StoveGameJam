@@ -90,6 +90,7 @@ public class MoveController : MonoBehaviour
 
     public void SpringJump(Vector3 SpringPower)
     {
+        Debug.Log(SpringPower);
         Direction = Vector3.zero;
         ExtraPower = SpringPower;
     }
