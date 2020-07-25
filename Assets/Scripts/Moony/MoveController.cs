@@ -46,7 +46,7 @@ public class MoveController : MonoBehaviour
         {
             RealSpeed *= AerialSlowDown;
         }
-        Direction.x = Input.GetAxis("Horizontal") * RealSpeed;
+        Direction.x = Mathf.Abs(Input.GetAxis("Horizontal") * RealSpeed);
         
         if (JumpKey)
         {

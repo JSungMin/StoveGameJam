@@ -19,17 +19,18 @@ public class Grapping : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
+        float ScanningDistance = (transform.localScale.x / 2) + distance;
+        Vector3 rayPosition;
+        rayPosition = transform.position;
+        Debug.DrawRay(rayPosition, transform.right * ScanningDistance, Color.red);
         if (Input.GetKeyDown(KeyCode.F))
         {
-            RaycastHit hit;
-            float ScanningDistance = (transform.localScale.x / 2) + distance;
-            Vector3 rayPosition;
-            rayPosition = transform.position;
-            Debug.DrawRay(rayPosition, transform.right * ScanningDistance, Color.green);
             if (Physics.Raycast(rayPosition, transform.right, out hit, ScanningDistance))
             {
                 if (hit.collider != null)
                 {
+                    Debug.Log(hit.collider.gameObject.name);
                     var grabObj = hit.collider.GetComponent<CanGrabObject>();
                     if (grabObj.isGrab)
                     {
