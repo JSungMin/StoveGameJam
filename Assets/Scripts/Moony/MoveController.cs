@@ -13,9 +13,11 @@ public class MoveController : MonoBehaviour
     private Vector3 ExtraPower;
     private Vector3 Direction;
     private CharacterController controller;
+    private float InAir;
     // Start is called before the first frame update
     private void Awake()
     {
+        InAir = 0f;
         ExtraPower = Vector3.zero;
         controller = GetComponent<CharacterController>();
     }
@@ -33,13 +35,8 @@ public class MoveController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (controller.isGrounded)
-        {
-            Direction = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            Direction = transform.TransformDirection(Direction);
-            Direction *= speed;
-        }
 
+        Direction.x = Input.GetAxis("Horizontal") * speed;
         
         if (JumpKey)
         {
@@ -53,11 +50,15 @@ public class MoveController : MonoBehaviour
         }
         
         Direction.y -= gravity * Time.deltaTime;
+        Direction = transform.TransformDirection(Direction);
         controller.Move(Direction * Time.deltaTime);
     }
 
     public void SpringJump(Vector3 SpringPower)
     {
+        Direction = Vector3.zero;
         ExtraPower = SpringPower;
     }
+
+   
 }
