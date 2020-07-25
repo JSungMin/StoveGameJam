@@ -6,7 +6,7 @@ using UnityEngine;
 public class Grapping : MonoBehaviour
 {
     public Player Player;
-
+    public CanGrabObject grabbedObject;
     public float distance = 0.5f;
     public float ScanningHeight = 0.5f;
     public Action<CanGrabObject> onGrab, onDrop;
@@ -32,19 +32,20 @@ public class Grapping : MonoBehaviour
                 if (hit.collider != null)
                 {
                     Debug.Log(hit.collider.gameObject.name);
-                    var grabObj = hit.collider.GetComponent<CanGrabObject>();
-                    if (!grabObj.isGrab)
+                    grabbedObject = hit.collider.GetComponent<CanGrabObject>();
+                    if (!grabbedObject.isGrab)
                     {
-                        grabObj.SendMessage("OnGrab", Player);
-                        onGrab?.Invoke(grabObj);
-                    }
-                    else
-                    {
-                        grabObj.SendMessage("OnDrop");
-                        onDrop?.Invoke(grabObj);
+                        grabbedObject.SendMessage("OnGrab", Player);
+                        onGrab?.Invoke(grabbedObject);
+                        return;
                     }
                 }
-                
+            }
+            if(null != grabbedObject && grabbedObject.isGrab)
+            {
+                grabbedObject.SendMessage("OnDrop");
+                onDrop?.Invoke(grabbedObject);
+                grabbedObject = null;
             }
         }
 

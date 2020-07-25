@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         MoveController = GetComponent<MoveController>();
         Hammering = GetComponent<Hammering>();
-        GrapObject = transform.GetChild(0);
         MoveController.onMove += OnMove;
         MoveController.onStop += OnStop;
         MoveController.onJump += OnJump;

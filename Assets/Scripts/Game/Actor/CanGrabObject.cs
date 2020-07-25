@@ -16,7 +16,7 @@ public class CanGrabObject : MonoBehaviour
         }
     }
     protected Rigidbody rigid;
-    protected Collider col;
+    public Collider col;
     protected Transform curPivot = null;
     protected Transform restoreParent;
     public bool isGrab = false;
@@ -38,11 +38,12 @@ public class CanGrabObject : MonoBehaviour
             curPivot = pivot;
         else
             curPivot = actor.transform;
-        transform.SetParent(curPivot.transform);
+        transform.parent = curPivot;
+
         transform.localPosition = Vector3.zero;
         rigid.velocity = Vector3.zero;
         rigid.Sleep();
-        col.enabled = false;
+        col.isTrigger = true;
         isGrab = true;
     }
     public void OnDrop()
@@ -52,10 +53,14 @@ public class CanGrabObject : MonoBehaviour
         curPivot = null;
         rigid.WakeUp();
         rigid.velocity = Vector3.zero;
-        col.enabled = true;
+        col.isTrigger = false;
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        if (isGrab) rigid.Sleep();
+        if (isGrab)
+        {
+            transform.localPosition = Vector3.zero;
+            rigid.Sleep();
+        }
     }
 }
