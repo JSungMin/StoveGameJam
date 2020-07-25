@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public interface ITrapReceiver
 {
-    void OnTrapped(TrapBase trap);
+    void OnTrapped(BaseTrap trap);
 }
 
-public abstract class TrapBase : MonoBehaviour
+public abstract class BaseTrap : MonoBehaviour
 {
     public Collider trapTrigger;
     public List<Collider> victimCaches = new List<Collider>();
