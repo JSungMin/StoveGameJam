@@ -7,7 +7,7 @@ public class Grapping : MonoBehaviour
 {
     public Player Player;
 
-    public float ScanningDistance = 0.5f;
+    public float distance = 0.5f;
     public Action<CanGrabObject> onGrab, onDrop;
     
     // Start is called before the first frame update
@@ -22,11 +22,11 @@ public class Grapping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             RaycastHit hit;
-            Vector3 Scale = new Vector3((transform.localScale.x / 2) + 0.1f, 0, 0);
+            float ScanningDistance = (transform.localScale.x / 2) + distance;
             Vector3 rayPosition;
-            rayPosition = transform.position + Scale;
-            Debug.DrawRay(rayPosition, transform.forward * ScanningDistance, Color.red);
-            if (Physics.Raycast(rayPosition, transform.forward, out hit, ScanningDistance))
+            rayPosition = transform.position;
+            Debug.DrawRay(rayPosition, transform.right * ScanningDistance, Color.green);
+            if (Physics.Raycast(rayPosition, transform.right, out hit, ScanningDistance))
             {
                 if (hit.collider != null)
                 {
