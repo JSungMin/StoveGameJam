@@ -847,7 +847,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   child_background: {fileID: 2689853070974120493}
-  gameoverScene: 0
 --- !u!1 &2689853069749012310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2298,7 @@ MonoBehaviour:
   - name: 
     itemType: 0
     count: 15
-    itemImg: {fileID: 21300000, guid: b2bba6e5c8c5a6944a4af4cc07dcc1eb, type: 3}
+    itemImg: {fileID: 21300000, guid: 7029464a7c02ac84b8b95eed64561ff4, type: 3}
     ink_price: 0
   - name: 
     itemType: 1
@@ -2309,12 +2308,12 @@ MonoBehaviour:
   - name: 
     itemType: 2
     count: 0
-    itemImg: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    itemImg: {fileID: 21300000, guid: 7ff25a111793a044eae9313216eedceb, type: 3}
     ink_price: 2
   - name: 
     itemType: 3
     count: 0
-    itemImg: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+    itemImg: {fileID: 21300000, guid: 8f77881b047944f49879fbc7761eece9, type: 3}
     ink_price: 3
   itemUILayout: {fileID: 2689853070354278846}
   itemUIObj: {fileID: 4281337725110364678, guid: 1e25fa17cca8fea449f3c9e8c61e5ff7,
