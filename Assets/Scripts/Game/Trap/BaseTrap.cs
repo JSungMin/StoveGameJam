@@ -26,13 +26,17 @@ public abstract class BaseTrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        var cached = victimCaches.Find(x => x == other);
-        if(null != cached) return;
-        victimCaches.Add(other);
-        onTrapIn?.Invoke();
-        OnTrapIn(other);
-        var receiver = other.GetComponent<ITrapReceiver>();
-        receiver?.OnTrapped(this);
+        if(other.CompareTag("Player"))
+        {
+            var cached = victimCaches.Find(x => x == other);
+            if (null != cached) return;
+            victimCaches.Add(other);
+            onTrapIn?.Invoke();
+            OnTrapIn(other);
+            var receiver = other.GetComponent<ITrapReceiver>();
+            receiver?.OnTrapped(this);
+        }
+        
     }
     private void OnTriggerExit(Collider other) 
     {
