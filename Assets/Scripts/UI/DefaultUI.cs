@@ -46,6 +46,17 @@ public class DefaultUI : MonoBehaviour
     {
         GameStop(false);
         SceneManager.LoadScene(_sceneIdx);
+        switch (_sceneIdx)
+        {
+            case 0:
+            case 1:
+            case 2:
+                gameObject.SetActive(false);
+                break;
+            default:
+                gameObject.SetActive(true);
+                break;
+        }
     }
 
     public void GameStop(bool _stop = false) 
