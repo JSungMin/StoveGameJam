@@ -51,6 +51,7 @@ public class DefaultUI : MonoBehaviour
             case 0:
             case 1:
             case 2:
+            case 3:
                 gameObject.SetActive(false);
                 break;
             default:

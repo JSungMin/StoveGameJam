@@ -25,13 +25,13 @@ public class TextShowUI : MonoBehaviour
         TextShow(_text, vec);
     }
 
-    public void TextShow(string _text, Vector3 _pos)
+    public void TextShow(string _text, Vector3 _pos, int _time = 3)
     {
         _pos = Camera.main.WorldToScreenPoint(_pos);
         GameObject obj = Instantiate(origObj, _pos, Quaternion.identity);
         obj.transform.SetParent(transform);
         obj.transform.Find("Text").GetComponent<Text>().text = _text;
-        StartCoroutine(ShowCoroutine(obj));
+        StartCoroutine(ShowCoroutine(obj, _time));
     }
 
     IEnumerator ShowCoroutine(GameObject _target, int _time = 3)
