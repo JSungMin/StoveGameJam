@@ -28,10 +28,11 @@ public class CanGrabObject : MonoBehaviour
         restoreParent = transform.parent;
     }
     public static GrabParam GetGrabParam(GameObject actor, Transform pivot = null) => new GrabParam(actor, pivot); 
-    public void OnGrab(GrabParam param)
+    public void OnGrab(Player player)
     {
-        var actor = param.actor;
-        var pivot = param.pivot;
+        var grabParam = GetGrabParam(player.gameObject, player.GrapObject);
+        var actor = grabParam.actor;
+        var pivot = grabParam.pivot;
 
         if(pivot != null)
             curPivot = pivot;
