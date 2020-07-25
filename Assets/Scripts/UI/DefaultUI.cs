@@ -47,7 +47,7 @@ public class DefaultUI : MonoBehaviour
 
     public void GameStop(bool _stop = false) 
     {
-        if(!_stop)
+        if(_stop)
         {
             Time.timeScale = 0;
         }
@@ -56,7 +56,7 @@ public class DefaultUI : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        //Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
     public void GameRestart()
