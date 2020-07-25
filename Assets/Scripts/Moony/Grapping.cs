@@ -43,7 +43,7 @@ public class Grapping : MonoBehaviour
             }
             if(null != grabbedObject && grabbedObject.isGrab)
             {
-                grabbedObject.SendMessage("OnDrop");
+                grabbedObject.SendMessage("OnDrop", Player);
                 onDrop?.Invoke(grabbedObject);
                 grabbedObject = null;
             }
