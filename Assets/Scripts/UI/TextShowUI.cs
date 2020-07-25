@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class TextShowUI : MonoBehaviour
 {
+    public static TextShowUI instance;
     public GameObject origObj;
     public List<GameObject> tutorialObjList;
 
     private void Awake()
     {
+        instance = this;
         //테스트 스트립트
         //TextShow_Player("안녕! 나는 공책 낙서야");
         //TutorialShortShow();
