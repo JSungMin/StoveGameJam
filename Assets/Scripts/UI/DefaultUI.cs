@@ -7,6 +7,8 @@ public class DefaultUI : MonoBehaviour
     public bool active = false;
     public GameObject child_background;
 
+    public int gameoverScene = 0;
+
     private void Awake()
     {
         instance = this;
@@ -60,10 +62,24 @@ public class DefaultUI : MonoBehaviour
         //Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
-    public void GameRestart()
+    public void GameRestart(bool _gameover = true)
     {
         Debug.Log("현재의 씬을 다시 엶");
-        OpenScene(SceneManager.GetActiveScene().name);
+        if (!_gameover)
+        {
+            OpenScene(SceneManager.GetActiveScene().name);
+            return;
+        }
+
+        // 게임 오버로 이동하는 코드
+        gameoverScene = SceneManager.GetActiveScene().buildIndex;
+        OpenScene("GameOver");
+    }
+
+    public void GameOverBack()
+    {
+        OpenScene(gameoverScene);
+        gameoverScene = 0;
     }
 
     public void GameGoToTitle()
