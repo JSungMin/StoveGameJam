@@ -48,7 +48,7 @@ public class ItemSystem : MonoBehaviour
     public void CanUseItem(List<Item> _list)
     {
         for (int i = 0; i < itemList.Count; i++)
-            itemList[i].canbuy = false;
+            itemList[i].canbuy = itemList[i].itemType == Item.ink;
 
         for(int i = 0; i < _list.Count; i++)
         {
