@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 7262515074576878977, guid: 8541809d187b9d24c88deb84d8598bff,
         type: 3}
       propertyPath: canUseItemList.Array.data[1]
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7262515074576878977, guid: 8541809d187b9d24c88deb84d8598bff,
         type: 3}

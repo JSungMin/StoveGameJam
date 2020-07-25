@@ -87,8 +87,8 @@ public class ItemSystem : MonoBehaviour
     public bool ItemUse(Item _type, int _ct = 1) // 아이템을 사용합니다. (기본값 : 1개 사용)
     {
         var target = ItemFind(_type);
-        if (target == null || target.count < _ct) return false;
-        target.count -= _ct;
+        if (target.count < _ct) return false;
+        ItemFind(_type).count -= _ct;
         ItemUIObj_Reflash();
         return true;
     }
@@ -112,7 +112,7 @@ public class ItemSystem : MonoBehaviour
         itemUILayout.SetActive(_show);
     }
 
-    string uiobjname = "";
+    //string uiobjname = "";
     public void ItemUIObj_Reflash(bool _firstActive = false) // 아이템 UI를 새로고침합니다. (아이템 사용 시 바로 적용될 수 있도록)
     {
         for(int i = 0; i < itemList.Count; i++)
@@ -137,9 +137,11 @@ public class ItemSystem : MonoBehaviour
                 obj.name = target.name;
                 obj.transform.SetParent(itemUILayout.transform);
                 Button btn = obj.transform.Find("ItemImage").GetComponent<Button>();
-                uiobjname = obj.name;
-                if(target.name != Item.ink.ToString())
-                    btn.onClick.AddListener(ItmMke);
+                if(obj.name != Item.ink.ToString())
+                {
+                    string uiobjname = obj.name;
+                    btn.onClick.AddListener(delegate () { ItemMake(uiobjname); });
+                }
                 itemUIObjList.Add(obj);
             }
 
@@ -152,11 +154,6 @@ public class ItemSystem : MonoBehaviour
             //    obj.
         }
 
-    }
-
-    void ItmMke()
-    {
-        ItemMake(uiobjname);
     }
 
 }
