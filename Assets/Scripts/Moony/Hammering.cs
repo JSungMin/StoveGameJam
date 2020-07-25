@@ -24,7 +24,7 @@ public class Hammering : MonoBehaviour
     void Update()
     {
         boxIndex = 1;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !animator.GetBool("Grabbing"))
         {
             
             CoTime = HammeringTime;
