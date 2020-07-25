@@ -689,11 +689,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3789396128684054678, guid: d563c27a67389864abf2aee3e7ac9617,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3789396128684054679, guid: d563c27a67389864abf2aee3e7ac9617,
         type: 3}
       propertyPath: mainFollow
       value: 
       objectReference: {fileID: 2167653339068443449}
+    - target: {fileID: 3789396129563477168, guid: d563c27a67389864abf2aee3e7ac9617,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789396129563477183, guid: d563c27a67389864abf2aee3e7ac9617,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.68104
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789396129563477183, guid: d563c27a67389864abf2aee3e7ac9617,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.33584
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789396129643186167, guid: d563c27a67389864abf2aee3e7ac9617,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5714808803496909206, guid: d563c27a67389864abf2aee3e7ac9617,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -753,6 +778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837575326540804794, guid: d563c27a67389864abf2aee3e7ac9617,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d563c27a67389864abf2aee3e7ac9617, type: 3}
