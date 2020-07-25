@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestLogic : MonoBehaviour
 {
     public GameObject box;
+    public SpringObject spring;
     public bool isGrab = false;
     // Start is called before the first frame update
     void Start()
