@@ -5,10 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class CanGrabObject : MonoBehaviour
 {
+    public float throwPower = 200f;
     public class GrabParam
     {
         public GameObject actor;
         public Transform pivot;
+        
         public GrabParam(GameObject a, Transform p)
         {
             actor = a;
@@ -34,10 +36,14 @@ public class CanGrabObject : MonoBehaviour
     public static GrabParam GetGrabParam(GameObject actor, Transform pivot = null) => new GrabParam(actor, pivot); 
     public void OnGrab(Player player)
     {
-        var SpringChild = transform.GetChild(0);
-        if (SpringChild != null)
+        
+        if (transform.childCount!=0)
         {
-            SpringChild.transform.GetComponent<SpringObject>().isGrapping = false;
+            transform.GetChild(0).GetComponent<SpringObject>().isGrapping = true;
+            if(!transform.GetChild(0).GetComponent<SpringObject>().isBending)
+            {
+                return;
+            }
         }
         var grabParam = GetGrabParam(player.gameObject, player.GrapObject);
         var actor = grabParam.actor;
@@ -60,19 +66,19 @@ public class CanGrabObject : MonoBehaviour
     }
     public void OnDrop(Player player)
     {
-        var SpringChild = transform.GetChild(0);
-        if (SpringChild != null)
+        
+        if (transform.childCount != 0)
         {
-            SpringChild.transform.GetComponent<SpringObject>().isGrapping = true;
+            transform.GetChild(0).GetComponent<SpringObject>().isGrapping = false;
         }
-        int DropDir = 0;
+        float DropDir = 0;
         if (player.transform.localRotation.y < 0)
         {
-            DropDir = -100;
+            DropDir = -throwPower;
         }
         else if (player.transform.localRotation.y >= 0)
         {
-            DropDir = 100;
+            DropDir = throwPower;
         }
         
         isGrab = false;
@@ -82,7 +88,7 @@ public class CanGrabObject : MonoBehaviour
         rigid.velocity = Vector3.zero;
         Debug.Log("Drop: " + DropDir.ToString());
         col.isTrigger = false;
-        rigid.AddForce(new Vector3(DropDir, 100f, 0));
+        rigid.AddForce(new Vector3(DropDir, throwPower, 0));
     }
     private void FixedUpdate()
     {

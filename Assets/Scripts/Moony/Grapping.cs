@@ -10,6 +10,7 @@ public class Grapping : MonoBehaviour
     public float distance = 0.5f;
     public float ScanningHeight = 0.5f;
     public Action<CanGrabObject> onGrab, onDrop;
+    private bool bendbool = true;
     
     private bool curgrab = false;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class Grapping : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bendbool = true;
         RaycastHit hit;
         float ScanningDistance = (transform.localScale.x / 2) + distance;
         Vector3 rayPosition;
@@ -32,9 +34,14 @@ public class Grapping : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
+                    if(hit.transform.GetComponentInChildren<SpringObject>()!=null)
+                    {
+                        bendbool = hit.transform.GetComponentInChildren<SpringObject>().isBending;
+                    }
+
                     Debug.Log(hit.collider.gameObject.name);
                     grabbedObject = hit.collider.GetComponent<CanGrabObject>();
-                    if (null != grabbedObject && !grabbedObject.isGrab)
+                    if (null != grabbedObject && !grabbedObject.isGrab&&bendbool)
                     {
                         grabbedObject.SendMessage("OnGrab", Player);
                         curgrab = true;

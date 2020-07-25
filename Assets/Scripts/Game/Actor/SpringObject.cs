@@ -32,10 +32,10 @@ public class SpringObject : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.transform.CompareTag("Player") && isBending&&isGrapping)
+
+        if (other.transform.CompareTag("Player") && isBending && !isGrapping)
         {
-            int direc=0;
+            int direc = 0;
             isBending = false;
             bendCount = 0;
             if (playerOb.transform.localRotation.y < 0)
