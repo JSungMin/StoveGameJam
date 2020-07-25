@@ -14,7 +14,7 @@ public class MoveController : MonoBehaviour
     private float RealSpeed;
     private Vector3 ExtraPower;
     private Vector3 Direction;
-    private CharacterController controller;
+    public CharacterController controller;
 
     public Action onMove, onStop, onJump;
     // Start is called before the first frame update
