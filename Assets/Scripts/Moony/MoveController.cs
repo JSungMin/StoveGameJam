@@ -36,7 +36,7 @@ public class MoveController : MonoBehaviour
             player.animator.SetBool("JumpUp", false);
             player.animator.SetBool("JumpDown", false);
             
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetButtonDown("Jump"))
             {
                 JumpKey = true;
             }
