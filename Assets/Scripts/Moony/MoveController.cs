@@ -32,21 +32,12 @@ public class MoveController : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            player.animator.SetBool("JumpUp",false);
-            player.animator.SetBool("JumpDown", false);
+            
             Direction.y = 0;
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 JumpKey = true;
             }
-        }
-
-        if(Direction.y > 0){
-            player.animator.SetBool("JumpUp", true);
-        }
-        else if(Direction.y < 0){
-            player.animator.SetBool("JumpUp", false);
-            player.animator.SetBool("JumpDown", true);
         }
     }
     // Update is called once per frame
