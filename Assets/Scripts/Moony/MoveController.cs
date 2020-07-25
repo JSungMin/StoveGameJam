@@ -10,11 +10,13 @@ public class MoveController : MonoBehaviour
     public float jumpPower = 20.0f;
     public float gravity = 20.0f;
     private bool JumpKey = false;
+    private Vector3 ExtraPower;
     private Vector3 Direction;
     private CharacterController controller;
     // Start is called before the first frame update
     private void Awake()
     {
+        ExtraPower = Vector3.zero;
         controller = GetComponent<CharacterController>();
     }
     
@@ -36,21 +38,26 @@ public class MoveController : MonoBehaviour
             Direction = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
             Direction = transform.TransformDirection(Direction);
             Direction *= speed;
-
         }
+
+        
         if (JumpKey)
         {
             Direction.y = jumpPower;
             JumpKey = false;
         }
-
-
+        if(ExtraPower!=Vector3.zero)
+        {
+            Direction += ExtraPower;
+            ExtraPower = Vector3.zero;
+        }
+        
         Direction.y -= gravity * Time.deltaTime;
         controller.Move(Direction * Time.deltaTime);
     }
 
     public void SpringJump(Vector3 SpringPower)
     {
-        Direction += SpringPower;
+        ExtraPower = SpringPower;
     }
 }
