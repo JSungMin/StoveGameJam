@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public enum Item // 아이템의 타입.
 {
     ink,
-    hammer
+    hammer,
+    cutter,
+    tape
 }
 
 public class ItemSystem : MonoBehaviour
@@ -18,6 +21,9 @@ public class ItemSystem : MonoBehaviour
         public Item itemType;
         public int count;
         public Sprite itemImg;
+
+        [Header("상점 옵션"), Range(0, 10)]
+        public int ink_price;
     }
 
     public List<HaveItem> itemList;
@@ -32,7 +38,7 @@ public class ItemSystem : MonoBehaviour
         {
             itemList[i].name = itemList[i].itemType.ToString();
         }
-        ItemUIObj_Reflash();
+        ItemUIObj_Reflash(true);
     }
 
     public HaveItem ItemFind(Item _type) // 아이템을 리스트에서 찾아서 리턴
@@ -66,10 +72,22 @@ public class ItemSystem : MonoBehaviour
     public bool ItemUse(Item _type, int _ct = 1) // 아이템을 사용합니다. (기본값 : 1개 사용)
     {
         var target = ItemFind(_type);
-        if (target.count > _ct) return false;
+        if (target.count < _ct) return false;
         ItemFind(_type).count -= _ct;
         ItemUIObj_Reflash();
         return true;
+    }
+
+    public void ItemMake(string _wantItemName)
+    {
+        ItemMake((Item)System.Enum.Parse(typeof(Item), _wantItemName), 1);
+    }
+
+    public bool ItemMake(Item _wantItem, int _ct = 1) // 아이템을 제작합니다.
+    {
+        bool result = ItemUse(Item.ink, ItemFind(_wantItem).ink_price * _ct);
+        if (result) ItemGet(_wantItem, _ct);
+        return result;
     }
 
 
@@ -79,41 +97,37 @@ public class ItemSystem : MonoBehaviour
         itemUILayout.SetActive(_show);
     }
 
-    public void ItemUIObj_Reflash() // 아이템 UI를 새로고침합니다. (아이템 사용 시 바로 적용될 수 있도록)
+    public void ItemUIObj_Reflash(bool _firstActive = false) // 아이템 UI를 새로고침합니다. (아이템 사용 시 바로 적용될 수 있도록)
     {
         for(int i = 0; i < itemList.Count; i++)
         {
             var target = itemList[i];
-            if (target.count <= 0) // 아이템의 개수가 0일 경우
+            GameObject obj = null;
+
+            for (int j = 0; j < itemUIObjList.Count; j++)
             {
-                for(int j = 0; j < itemUIObjList.Count; j++)
+                if (itemUIObjList[j].name == target.name)
                 {
-                    if (itemUIObjList[j].name == target.name)
-                        itemUIObjList[j].SetActive(false);
+                    obj = itemUIObjList[j];
+                    if(_firstActive)
+                        obj.SetActive(target.count > 0);
                 }
             }
-            else // 아이템의 개수가 1개 이상일 경우
+
+            if (target.count > 0 && obj == null) 
+                // 아이템의 개수가 1개 이상인데 그에 해당하는 객체가 없을 경우 새로 생성.
             {
-                GameObject obj = null;
-                for (int j = 0; j < itemUIObjList.Count; j++) // 이미 UI에 객체가 있으면 
-                {
-                    if (itemUIObjList[j].name == target.name)
-                    {
-                        obj = itemUIObjList[j];
-                        obj.SetActive(true);
-                    }
-                }
-                if(obj == null)
-                {
-                    obj = Instantiate(itemUIObj, Vector3.zero, Quaternion.identity);
-                    obj.name = target.name;
-                    obj.transform.SetParent(itemUILayout.transform);
-                    itemUIObjList.Add(obj);
-                }
-                obj.transform.Find("ItemText").GetComponent<Text>().text = " × " + target.count;
-                obj.transform.Find("ItemImage").GetComponent<Image>().sprite = target.itemImg;
+                obj = Instantiate(itemUIObj, Vector3.zero, Quaternion.identity);
+                obj.name = target.name;
+                obj.transform.SetParent(itemUILayout.transform);
+                itemUIObjList.Add(obj);
             }
-            
+
+            if (obj == null) continue;
+
+            obj.transform.Find("ItemText").GetComponent<Text>().text = " × " + target.count;
+            obj.transform.Find("ItemImage").GetComponent<Image>().sprite = target.itemImg;
+
         }
 
     }
