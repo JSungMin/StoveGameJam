@@ -21,15 +21,18 @@ public abstract class BaseTrap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        trapTrigger = GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider other) 
     {
         var cached = victimCaches.Find(x => x == other);
         if(null != cached) return;
+        victimCaches.Add(other);
         onTrapIn?.Invoke();
         OnTrapIn(other);
+        var receiver = other.GetComponent<ITrapReceiver>();
+        receiver?.OnTrapped(this);
     }
     private void OnTriggerExit(Collider other) 
     {
