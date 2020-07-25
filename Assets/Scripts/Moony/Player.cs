@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
     }
     private void OnGrab(CanGrabObject obj)
     {
+
         animator.SetBool("Grabbing", true);
         grabEvent?.Invoke();
     }

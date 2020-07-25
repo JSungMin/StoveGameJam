@@ -34,9 +34,16 @@ public class CanGrabObject : MonoBehaviour
     public static GrabParam GetGrabParam(GameObject actor, Transform pivot = null) => new GrabParam(actor, pivot); 
     public void OnGrab(Player player)
     {
+        var SpringChild = transform.GetChild(0);
+        if (SpringChild != null)
+        {
+            SpringChild.transform.GetComponent<SpringObject>().isGrapping = false;
+        }
         var grabParam = GetGrabParam(player.gameObject, player.GrapObject);
         var actor = grabParam.actor;
         var pivot = grabParam.pivot;
+        
+        
 
         if(pivot != null)
             curPivot = pivot;
@@ -53,6 +60,11 @@ public class CanGrabObject : MonoBehaviour
     }
     public void OnDrop(Player player)
     {
+        var SpringChild = transform.GetChild(0);
+        if (SpringChild != null)
+        {
+            SpringChild.transform.GetComponent<SpringObject>().isGrapping = true;
+        }
         int DropDir = 0;
         if (player.transform.localRotation.y < 0)
         {

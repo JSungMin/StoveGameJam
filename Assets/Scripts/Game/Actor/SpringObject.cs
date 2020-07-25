@@ -9,6 +9,7 @@ public class SpringObject : MonoBehaviour
     protected Animator animator;
     public int bendLimit = 1, bendCount = 0;
     public bool isBending = false;
+    public bool isGrapping = false;
     public Vector3 springDir;
     public float springPower = 15f;
     private Player playerOb;
@@ -32,12 +33,20 @@ public class SpringObject : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.transform.CompareTag("Player") && isBending)
+        if (other.transform.CompareTag("Player") && isBending&&isGrapping)
         {
-            Debug.Log("Enter!!!!!");
+            int direc=0;
             isBending = false;
             bendCount = 0;
-            springDir = new Vector3(springPower, springPower * 0.5f, 0);
+            if (playerOb.transform.localRotation.y < 0)
+            {
+                direc = -1;
+            }
+            else if (playerOb.transform.localRotation.y >= 0)
+            {
+                direc = 1;
+            }
+            springDir = new Vector3(springPower * 0.5f * direc, springPower, 0);
             playerOb.MoveController.SpringJump(springDir);
             animator.SetTrigger("IsOverBending");
             col.isTrigger = false;
