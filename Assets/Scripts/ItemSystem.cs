@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Item
+public enum Item // 아이템의 타입.
 {
     ink,
-    hammer,
-    NumberOfTypes // 사용하지 않는 enum입니다.
+    hammer
 }
 
 public class ItemSystem : MonoBehaviour
@@ -19,25 +18,6 @@ public class ItemSystem : MonoBehaviour
         public Item itemType;
         public int count;
         public Sprite itemImg;
-
-        #region 너무 단순한 기능
-        public HaveItem(Item _itemType, int _count = 0)
-        {
-            name = _itemType.ToString();
-            itemType = _itemType;
-            count = _count;
-        }
-
-        public void ItemUse(int _ct = 1)
-        {
-            count -= _ct;
-        }
-
-        public void ItemGet(int _ct = 1)
-        {
-            count += _ct;
-        }
-        #endregion
     }
 
     public List<HaveItem> itemList;
@@ -79,14 +59,17 @@ public class ItemSystem : MonoBehaviour
 
     public void ItemGet(Item _type, int _ct = 1) // 아이템을 얻습니다.
     {
-        ItemFind(_type).ItemGet(_ct);
+        ItemFind(_type).count += _ct;
         ItemUIObj_Reflash();
     }
 
-    public void ItemUse(Item _type, int _ct = 1) // 아이템을 사용합니다. (기본값 : 1개 사용)
+    public bool ItemUse(Item _type, int _ct = 1) // 아이템을 사용합니다. (기본값 : 1개 사용)
     {
-        ItemFind(_type).ItemUse(_ct);
+        var target = ItemFind(_type);
+        if (target.count > _ct) return false;
+        ItemFind(_type).count -= _ct;
         ItemUIObj_Reflash();
+        return true;
     }
 
 
