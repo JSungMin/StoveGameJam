@@ -121,6 +121,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &2590414
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5345734689810280361, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundMamager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.570581
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.9776483
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345734689810280363, guid: f9fb2b979cbe4c744adfe6385050c501,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9fb2b979cbe4c744adfe6385050c501, type: 3}
 --- !u!1001 &11417859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 3342759251362740540, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3342759251362740540, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
         type: 3}
@@ -187,6 +256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grabspring (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265064494337748613, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
+        type: 3}
+      propertyPath: springPower
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6e5594726b8ee4faf6133bfb62dea6, type: 3}
@@ -1475,6 +1549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grabspring
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265064494337748613, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
+        type: 3}
+      propertyPath: springPower
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6e5594726b8ee4faf6133bfb62dea6, type: 3}
@@ -2896,7 +2975,7 @@ PrefabInstance:
     - target: {fileID: 3342759251362740540, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3342759251362740540, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
         type: 3}
@@ -2938,10 +3017,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3342759251362740541, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
+        type: 3}
+      propertyPath: throwPower
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3342759251362740543, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
         type: 3}
       propertyPath: m_Name
       value: Grabspring (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265064494337748613, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
+        type: 3}
+      propertyPath: springPower
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6e5594726b8ee4faf6133bfb62dea6, type: 3}
