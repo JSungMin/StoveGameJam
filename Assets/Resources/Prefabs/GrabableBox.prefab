@@ -48,7 +48,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!65 &1561796887168942587
 BoxCollider:
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1088deb15adaa5248b617fd74f1cd628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwPower: 200
   col: {fileID: 0}
   isGrab: 0
 --- !u!212 &4790012056337242685

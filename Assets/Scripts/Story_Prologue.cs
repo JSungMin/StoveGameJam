@@ -28,6 +28,6 @@ public class Story_Prologue : MonoBehaviour
             yield return new WaitForSeconds(5);
         }
 
-        DefaultUI.instance.OpenScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Scene01");
     }
 }
