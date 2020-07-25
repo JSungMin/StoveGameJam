@@ -1011,7 +1011,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ea416b3a0f1a9d4db4c8570fb9076a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5, y: 5}
@@ -2275,12 +2275,12 @@ MonoBehaviour:
   - name: 
     itemType: 0
     count: 15
-    itemImg: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    itemImg: {fileID: 21300000, guid: b2bba6e5c8c5a6944a4af4cc07dcc1eb, type: 3}
     ink_price: 0
   - name: 
     itemType: 1
     count: 0
-    itemImg: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    itemImg: {fileID: 21300000, guid: b2bba6e5c8c5a6944a4af4cc07dcc1eb, type: 3}
     ink_price: 1
   - name: 
     itemType: 2
