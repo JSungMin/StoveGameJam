@@ -3,7 +3,6 @@
 public class DrawBounds : MonoBehaviour {
 
     private MeshFilter filter;
-
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
