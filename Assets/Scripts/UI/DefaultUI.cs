@@ -62,6 +62,11 @@ public class DefaultUI : MonoBehaviour
         //Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
+    public void GameRestart()
+    {
+        GameRestart(true);
+    }
+
     public void GameRestart(bool _gameover = true)
     {
         Debug.Log("현재의 씬을 다시 엶");
