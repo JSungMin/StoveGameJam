@@ -14,6 +14,8 @@ public enum Item // 아이템의 타입.
 
 public class ItemSystem : MonoBehaviour
 {
+    public static ItemSystem instance;
+
     [System.Serializable]
     public class HaveItem
     {
@@ -34,6 +36,7 @@ public class ItemSystem : MonoBehaviour
 
     public void Awake()
     {
+        instance = this;
         for (int i = 0; i < itemList.Count; i++)
         {
             itemList[i].name = itemList[i].itemType.ToString();
