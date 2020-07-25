@@ -15,7 +15,7 @@ public class SpringObject : MonoBehaviour
         col = GetComponent<Collider>();
         animator = GetComponent<Animator>();
     }
-    public void OnHammering(MoveController moveCon)
+    public void OnHammering(Player player)
     {
         if(bendCount < bendLimit)
         {
@@ -27,6 +27,7 @@ public class SpringObject : MonoBehaviour
         {
             isBending = false;
             //  TODO : AddForce To Player
+            
             //  moveCon.AddForce(sprintDir*sprintPower);
         }
         animator.SetBool("IsOverBending", isBending);
