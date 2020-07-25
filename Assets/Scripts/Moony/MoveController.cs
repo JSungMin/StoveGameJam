@@ -7,17 +7,18 @@ using UnityEngine;
 public class MoveController : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float AerialSlowDown = 0.5f;
     public float jumpPower = 20.0f;
     public float gravity = 20.0f;
     private bool JumpKey = false;
+    private float RealSpeed;
     private Vector3 ExtraPower;
     private Vector3 Direction;
     private CharacterController controller;
-    private float InAir;
     // Start is called before the first frame update
     private void Awake()
     {
-        InAir = 0f;
+        RealSpeed = speed;
         ExtraPower = Vector3.zero;
         controller = GetComponent<CharacterController>();
     }
@@ -35,8 +36,15 @@ public class MoveController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-
-        Direction.x = Input.GetAxis("Horizontal") * speed;
+        if (controller.isGrounded)
+        {
+            RealSpeed = speed;
+        }
+        else if (RealSpeed == speed)
+        {
+            RealSpeed *= AerialSlowDown;
+        }
+        Direction.x = Input.GetAxis("Horizontal") * RealSpeed;
         
         if (JumpKey)
         {
