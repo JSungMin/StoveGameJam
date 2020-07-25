@@ -30,9 +30,9 @@ public class Hammering : MonoBehaviour
             CoTime = HammeringTime;
             animator.SetTrigger("Hammer_trig");
             //StartCoroutine("Hammer");
-            if(Player.MoveController.GetVelocity.x < 0){
+            if(Player.transform.localRotation.y < 0){
                 boxIndex = -1;
-            }else if(Player.MoveController.GetVelocity.x > 0){
+            }else if(Player.transform.localRotation.y >= 0){
                 boxIndex = 1;
             }
             Collider[] colliderArray = Physics.OverlapBox(transform.position + new Vector3(boxIndex, 0.0f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f), Quaternion.identity);

@@ -21,15 +21,16 @@ public class SpringObject : MonoBehaviour
         {
             bendCount++;
             isBending = true;
-            animator.SetInteger("BendCount", bendCount);
         }
         else
         {
+            animator.SetTrigger("IsOverBending");
             isBending = false;
+            bendCount = 0;
             //  TODO : AddForce To Player
             player.MoveController.SpringJump(springDir*springPower);
             //  moveCon.AddForce(sprintDir*sprintPower);
         }
-        animator.SetBool("IsOverBending", isBending);
+        animator.SetInteger("BendCount", bendCount);
     }
 }
