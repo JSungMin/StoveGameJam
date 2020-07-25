@@ -49,7 +49,7 @@ public class MoveController : MonoBehaviour
         controller.Move(Direction * Time.deltaTime);
     }
 
-    void SpringJump(Vector3 SpringPower)
+    public void SpringJump(Vector3 SpringPower)
     {
         Direction += SpringPower;
     }
