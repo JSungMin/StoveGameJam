@@ -35,11 +35,12 @@ public class MoveController : MonoBehaviour
             Direction.y = 0;
             player.animator.SetBool("JumpUp", false);
             player.animator.SetBool("JumpDown", false);
-            
-            if (Input.GetButtonDown("Jump"))
+
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 JumpKey = true;
             }
+            
         }
         if(Direction.y > 0){
             player.animator.SetBool("JumpUp", true);
