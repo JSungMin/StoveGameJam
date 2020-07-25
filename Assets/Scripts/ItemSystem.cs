@@ -23,8 +23,9 @@ public class ItemSystem : MonoBehaviour
         public Item itemType;
         public int count;
         public Sprite itemImg;
+        public bool canbuy = false;
 
-        [Header("상점 옵션"), Range(0, 10)]
+        [Header("상점 옵션"), Range(0, 20)]
         public int ink_price;
     }
 
@@ -42,6 +43,17 @@ public class ItemSystem : MonoBehaviour
             itemList[i].name = itemList[i].itemType.ToString();
         }
         ItemUIObj_Reflash(true);
+    }
+
+    public void CanUseItem(List<Item> _list)
+    {
+        for (int i = 0; i < itemList.Count; i++)
+            itemList[i].canbuy = false;
+
+        for(int i = 0; i < _list.Count; i++)
+        {
+            ItemFind(_list[i]).canbuy = true;
+        }
     }
 
     public HaveItem ItemFind(Item _type) // 아이템을 리스트에서 찾아서 리턴
@@ -100,6 +112,7 @@ public class ItemSystem : MonoBehaviour
         itemUILayout.SetActive(_show);
     }
 
+    string uiobjname = "";
     public void ItemUIObj_Reflash(bool _firstActive = false) // 아이템 UI를 새로고침합니다. (아이템 사용 시 바로 적용될 수 있도록)
     {
         for(int i = 0; i < itemList.Count; i++)
@@ -117,22 +130,33 @@ public class ItemSystem : MonoBehaviour
                 }
             }
 
-            if (target.count > 0 && obj == null) 
+            if (target.canbuy && obj == null) 
                 // 아이템의 개수가 1개 이상인데 그에 해당하는 객체가 없을 경우 새로 생성.
             {
                 obj = Instantiate(itemUIObj, Vector3.zero, Quaternion.identity);
                 obj.name = target.name;
                 obj.transform.SetParent(itemUILayout.transform);
+                Button btn = obj.transform.Find("ItemImage").GetComponent<Button>();
+                uiobjname = obj.name;
+                if(target.name != Item.ink.ToString())
+                    btn.onClick.AddListener(ItmMke);
                 itemUIObjList.Add(obj);
             }
 
             if (obj == null) continue;
 
-            obj.transform.Find("ItemText").GetComponent<Text>().text = " × " + target.count;
+            obj.transform.Find("ItemText").GetComponent<Text>().text = "×" + target.count;
             obj.transform.Find("ItemImage").GetComponent<Image>().sprite = target.itemImg;
 
+            //if(target.count == 0)
+            //    obj.
         }
 
+    }
+
+    void ItmMke()
+    {
+        ItemMake(uiobjname);
     }
 
 }
