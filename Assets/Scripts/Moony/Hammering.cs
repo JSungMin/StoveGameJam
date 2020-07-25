@@ -40,7 +40,8 @@ public class Hammering : MonoBehaviour
             for (int i = 0; i < colliderArray.Length; i++)
             {
                 if(colliderArray[i].CompareTag("Spring"))
-                    colliderArray[i].SendMessage("OnHammering", Player);
+                    colliderArray[i].SendMessage("Bending", Player);
+                //colliderArray[i].SendMessage("OnHammering", Player);
             }
             Debug.Log("Hammered");
 
