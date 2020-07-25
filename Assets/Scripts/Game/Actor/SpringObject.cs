@@ -1,21 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SpringObject : InteractObject
+[RequireComponent(typeof(Collider),typeof(Animator))]
+public class SpringObject : MonoBehaviour
 {
-    public override void OnInteractEnd(GameObject actor)
+    protected Collider col;
+    protected Animator animator;
+    public int bendLimit = 1, bendCount = 0;
+    private bool isBending = false;
+    public Vector3 springDir = Vector3.up;
+    public float springPower = 15f;
+    protected void Start()
     {
-        
+        col = GetComponent<Collider>();
+        animator = GetComponent<Animator>();
     }
-
-    public override void OnInteractStart(GameObject actor, params object[] objs)
+    public void OnHammering(MoveController moveCon)
     {
-        
-    }
-
-    public override void OnInteractUpdate(GameObject actor)
-    {
-        
+        if(bendCount < bendLimit)
+        {
+            bendCount++;
+            isBending = true;
+            animator.SetInteger("BendCount", bendCount);
+        }
+        else
+        {
+            isBending = false;
+            //  TODO : AddForce To Player
+            //  moveCon.AddForce(sprintDir*sprintPower);
+        }
+        animator.SetBool("IsOverBending", isBending);
     }
 }

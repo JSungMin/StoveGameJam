@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TestLogic : MonoBehaviour
 {
-    public InteractObject box;
+    public GameObject box;
+    public bool isGrab = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,11 @@ public class TestLogic : MonoBehaviour
         if(inputSpace)
         {
             Debug.Log("Space");
-            box.Interact(gameObject);
+            if(!isGrab)
+                box.SendMessage("OnGrab", CanGrabObject.GetGrabParam(gameObject));
+            else
+                box.SendMessage("OnDrop");
+            isGrab = !isGrab;
         }        
     }
 }

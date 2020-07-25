@@ -3,35 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-public class CanGrabObject : InteractObject
+public class CanGrabObject : MonoBehaviour
 {
+    public class GrabParam
+    {
+        public GameObject actor;
+        public Transform pivot;
+        public GrabParam(GameObject a, Transform p)
+        {
+            actor = a;
+            pivot = p;
+        }
+    }
     protected Rigidbody rigid;
     protected Collider col;
     protected Transform curPivot = null;
-
+    protected Transform restoreParent;
+    public bool isGrab = false;
     // Start is called before the first frame update
-    protected override void Start()
+    protected void Start()
     {
         rigid = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        restoreParent = transform.parent;
     }
-    public override void OnInteractStart(GameObject actor, params object[] objs)
+    public static GrabParam GetGrabParam(GameObject actor, Transform pivot = null) => new GrabParam(actor, pivot); 
+    public void OnGrab(GrabParam param)
     {
-        if(objs.Length > 0)
-            curPivot = (Transform)objs[0];
+        var actor = param.actor;
+        var pivot = param.pivot;
+
+        if(pivot != null)
+            curPivot = pivot;
         else
             curPivot = actor.transform;
         transform.SetParent(curPivot.transform);
         transform.localPosition = Vector3.zero;
         rigid.velocity = Vector3.zero;
         rigid.Sleep();
+        isGrab = true;
     }
-    //  It's meen Actor Hold This Object
-    public override void OnInteractUpdate(GameObject actor)
+    public void OnDrop()
     {
-    }
-    public override void OnInteractEnd(GameObject actor)
-    {
+        isGrab = false;
+        curPivot = null;
         rigid.WakeUp();
+        transform.SetParent(restoreParent);
+    }
+    private void Update()
+    {
+        if (isGrab) rigid.Sleep();
     }
 }

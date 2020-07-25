@@ -11,27 +11,32 @@ public interface IInteractable
 }
 public abstract class InteractObject : MonoBehaviour, IInteractable
 {
-    public int interactState = -1;
-    [SerializeField]
+    public enum State
+     {
+        STOP = 0,
+        RUNNING
+    }
     private GameObject _actor;
+    public State interactState = State.STOP;
+    [SerializeField]
     public Action<GameObject, object[]> onInteractStart;
     public Action<GameObject> onInteractUpdate;
     public Action<GameObject> onInteractEnd;
 
     public void Interact(GameObject actor, params object[] objs)
     {
-        if(interactState == -1)
+        if(interactState == State.STOP)
         {
-            interactState = 0;
+            interactState = State.RUNNING;
             _actor = actor;
             onInteractStart?.Invoke(actor, objs);
         }
     }
     public void StopInteract(GameObject actor)
     {
-        if(interactState >= 0) onInteractEnd?.Invoke(actor);
+        if(interactState == State.RUNNING) onInteractEnd?.Invoke(actor);
         actor = null;
-        interactState = -1;
+        interactState = State.STOP;
     }
     protected virtual void Start() 
     {
@@ -41,9 +46,8 @@ public abstract class InteractObject : MonoBehaviour, IInteractable
     }
     private void Update()
     {
-        if(interactState >= 0)
+        if(interactState == State.RUNNING)
         {
-            interactState = 1;
             onInteractUpdate?.Invoke(_actor);
         }
     }
