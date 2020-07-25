@@ -33,4 +33,6 @@ public class SpringObject : MonoBehaviour
         }
         animator.SetInteger("BendCount", bendCount);
     }
+
+    
 }
