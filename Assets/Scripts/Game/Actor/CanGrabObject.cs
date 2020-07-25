@@ -20,12 +20,16 @@ public class CanGrabObject : MonoBehaviour
     protected Transform curPivot = null;
     protected Transform restoreParent;
     public bool isGrab = false;
+
     // Start is called before the first frame update
     protected void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        if(col == null){
+            col = GetComponent<Collider>();
+        }
         restoreParent = transform.parent;
+
     }
     public static GrabParam GetGrabParam(GameObject actor, Transform pivot = null) => new GrabParam(actor, pivot); 
     public void OnGrab(Player player)
@@ -75,5 +79,6 @@ public class CanGrabObject : MonoBehaviour
             transform.localPosition = Vector3.zero;
             rigid.Sleep();
         }
+
     }
 }

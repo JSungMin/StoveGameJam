@@ -51,7 +51,6 @@ public class MoveController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Debug.Log(Direction.y);
         if (controller.isGrounded)
         {
             RealSpeed = speed;

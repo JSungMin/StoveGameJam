@@ -4,12 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider),typeof(Animator))]
 public class SpringObject : MonoBehaviour
 {
-    protected Collider col;
+    public Collider col;
     protected Animator animator;
     public int bendLimit = 1, bendCount = 0;
-    private bool isBending = false;
+    public bool isBending = false;
     public Vector3 springDir = Vector3.up;
     public float springPower = 15f;
+
+
+
     protected void Start()
     {
         col = GetComponent<Collider>();
@@ -21,6 +24,7 @@ public class SpringObject : MonoBehaviour
         {
             bendCount++;
             isBending = true;
+
         }
         else
         {
@@ -32,6 +36,8 @@ public class SpringObject : MonoBehaviour
             //  moveCon.AddForce(sprintDir*sprintPower);
         }
         animator.SetInteger("BendCount", bendCount);
+        //parentAnimator.SetInteger("parentbendCount",bendCount);
+
     }
 
     
