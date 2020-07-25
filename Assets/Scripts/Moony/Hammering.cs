@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Hammering : MonoBehaviour
 {
-    public Player a;
+    public Player Player;
 
-    private bool HammerKey = false;
     public float HammeringTime = 0.5f;
     private float CoTime;
     // Start is called before the first frame update
     void Start()
     {
         CoTime = HammeringTime;
-        a = GetComponent<Player>();
+        Player = GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -35,7 +34,7 @@ public class Hammering : MonoBehaviour
             for (int i = 0; i < colliderArray.Length; i++)
             {
                 if(colliderArray[i].CompareTag("Spring"))
-                    colliderArray[i].SendMessage("OnHammering", a);
+                    colliderArray[i].SendMessage("OnHammering", Player);
             }
             CoTime -= 0.1f;
             Debug.Log("Hammered");
