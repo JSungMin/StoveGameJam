@@ -27,6 +27,7 @@ public class Slice : MonoBehaviour
             Instantiate(cutobjlist[i], transform.position, Quaternion.identity);
         }
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySliceSound();
         GetComponent<Slice>().enabled = false;
     }
 

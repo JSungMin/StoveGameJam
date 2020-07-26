@@ -180,6 +180,7 @@ MonoBehaviour:
   Spring: {fileID: 8300000, guid: 7c555bd125f8e2a4fa19d7a62499da8e, type: 3}
   DoorSound: {fileID: 8300000, guid: 99ded99bdf776c94682a4ae8bbe7e8b3, type: 3}
   MakeSound: {fileID: 8300000, guid: afbd2a87e949a5b4eae942e9eeb5e003, type: 3}
+  SliceSound: {fileID: 8300000, guid: 353bd34c7949b674a8aea92c1765f281, type: 3}
   BGM: {fileID: 8300000, guid: c4fe32b70f22aa043bbc49ae13cc83c9, type: 3}
 --- !u!1 &8533008852593074300
 GameObject:
