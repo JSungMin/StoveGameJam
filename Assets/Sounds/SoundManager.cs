@@ -17,6 +17,12 @@ public class SoundManager : SingletonGameObject<SoundManager>
 
     public void Start()
     {
+        var managers = FindObjectsOfType<SoundManager>();
+        if (managers.Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(gameObject);
     }
 
