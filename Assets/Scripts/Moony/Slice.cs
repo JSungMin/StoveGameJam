@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class Slice : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    public List<GameObject> cutobjlist;
 
     void Start()
     {
@@ -17,23 +18,16 @@ public class Slice : MonoBehaviour
     {
         
     }
+
     public void Slicing()
     {
-        StartCoroutine("AlphaCO");
-    }
-    IEnumerator AlphaCO()
-    {
-        Color color = spriteRenderer.color;
-        while (color.a > 0.0f)
+        if (!ItemSystem.instance.ItemUse(Item.cutter)) return;
+        for(int i = 0; i<cutobjlist.Count; i++)
         {
-            color.a -= 0.2f;
-            spriteRenderer.color = color;
-            yield return new WaitForSeconds(0.1f);
+            Instantiate(cutobjlist[i], transform.position, Quaternion.identity);
         }
-        Destroy(gameObject);
-                
-        
-      
-
+        gameObject.SetActive(false);
+        GetComponent<Slice>().enabled = false;
     }
+
 }

@@ -22,8 +22,8 @@ public class Cutting : MonoBehaviour
         RaycastHit hit;
         float ScanningDistance = (transform.localScale.x / 2) + distance;
         Vector3 rayPosition;
-        rayPosition = new Vector3(transform.position.x, transform.position.y + ScanningHeight, 0);
-        Debug.DrawRay(rayPosition, transform.right * ScanningDistance, Color.red);
+        rayPosition = new Vector3(transform.position.x, transform.position.y, 0);
+        Debug.DrawRay(rayPosition, transform.right * ScanningDistance, Color.blue);
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (Physics.Raycast(rayPosition, transform.right, out hit, ScanningDistance))
