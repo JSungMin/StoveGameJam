@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : SingletonGameObject<SoundManager>
 {
     public AudioSource audioSource;
+    public AudioSource bgmSource;
+
     public AudioClip HammerSound;
     public AudioClip JumpSound;
     public AudioClip StepSound;
     public AudioClip Spring;
     public AudioClip DoorSound;
     public AudioClip MakeSound;
-    public static SoundManager instance;
-    private void Awake()
+    public AudioClip BGM;
+
+    public void Start()
     {
-        if(SoundManager.instance==null)
-        {
-            SoundManager.instance = this;
-        }
+        DontDestroyOnLoad(gameObject);
     }
+
     public void PlayStepSound()
     {
         if (!audioSource.isPlaying)
@@ -45,6 +46,27 @@ public class SoundManager : MonoBehaviour
     public void PlayMakeSound()
     {
         audioSource.PlayOneShot(MakeSound);
+    }
+
+    public static void PlayBGM()
+    {
+        Instance.bgmSource.clip = Instance.BGM;
+        Instance.bgmSource.Play();
+    }
+
+    public static void PauseBGM()
+    {
+        Instance.bgmSource.Pause();
+    }
+
+    public static void UnPauseBGM()
+    {
+        Instance.bgmSource.UnPause();
+    }
+
+    public static void StopBGM()
+    {
+        Instance.bgmSource.Stop();
     }
 
 

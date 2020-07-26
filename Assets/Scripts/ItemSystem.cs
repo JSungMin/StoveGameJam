@@ -104,8 +104,8 @@ public class ItemSystem : MonoBehaviour
         if (result)
         {
             ItemGet(_wantItem, _ct);
-            if (SoundManager.instance != null)
-                SoundManager.instance.PlayMakeSound();
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayMakeSound();
         }
         return result;
     }
