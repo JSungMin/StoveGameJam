@@ -8,6 +8,7 @@ public class StageStartSetting_GoalDoor : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            ClearUI.instance.ClearUIOpen();
             StageStartSetting.instance.NextStage();
         }
     }
