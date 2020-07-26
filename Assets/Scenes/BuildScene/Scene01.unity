@@ -267,6 +267,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6856690168531740893, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 7265064494337748613, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
         type: 3}
       propertyPath: springPower
@@ -687,7 +692,7 @@ PrefabInstance:
     - target: {fileID: 2689853070205634019, guid: 47650f2a7c9c78241b435c8d8bd1326f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2689853070205634019, guid: 47650f2a7c9c78241b435c8d8bd1326f,
         type: 3}
@@ -1091,7 +1096,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &666609193 stripped
 Transform:
@@ -1724,7 +1729,7 @@ PrefabInstance:
     - target: {fileID: 7262515074576878976, guid: 8541809d187b9d24c88deb84d8598bff,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7262515074576878976, guid: 8541809d187b9d24c88deb84d8598bff,
         type: 3}
@@ -1929,7 +1934,7 @@ Transform:
   - {fileID: 1528238618}
   - {fileID: 1802453803}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090522721
 GameObject:
@@ -2106,8 +2111,26 @@ Transform:
   m_LocalScale: {x: 100, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1115616088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5345734689810280361, guid: f9fb2b979cbe4c744adfe6385050c501,
+    type: 3}
+  m_PrefabInstance: {fileID: 2590414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1115616091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115616088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df17e97417f50b4ca030b824c83970f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1308150475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2153,7 +2176,7 @@ PrefabInstance:
     - target: {fileID: 6637441578567676992, guid: 7e5ccec71b10bce438bfc60fc42fbdb3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6637441578567676992, guid: 7e5ccec71b10bce438bfc60fc42fbdb3,
         type: 3}
@@ -2542,7 +2565,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.8, y: 1.16, z: 1}
+  m_Size: {x: 19.442562, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1650857464
 SpriteRenderer:
@@ -2588,7 +2611,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 13.242955, y: 1.16}
+  m_Size: {x: 19.4, y: 1.16}
   m_AdaptiveModeThreshold: 1
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2602,7 +2625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650857462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.267, y: 0, z: 0}
+  m_LocalPosition: {x: 36.367, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1077908513}
@@ -3246,6 +3269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grabspring (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6856690168531740893, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 7265064494337748613, guid: 6f6e5594726b8ee4faf6133bfb62dea6,
         type: 3}
       propertyPath: springPower
@@ -3453,7 +3481,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40.86464, y: 1.16, z: 1}
+  m_Size: {x: 40.86464, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2127338753
 GameObject:
@@ -3600,7 +3628,7 @@ PrefabInstance:
     - target: {fileID: 2031968062466146021, guid: 84d0902cf624a9441a33c5dba4755f2d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2031968062466146021, guid: 84d0902cf624a9441a33c5dba4755f2d,
         type: 3}
@@ -3669,7 +3697,7 @@ PrefabInstance:
     - target: {fileID: 4536971890461197805, guid: 92a3faa60028f304ba9327593ba1087c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4536971890461197805, guid: 92a3faa60028f304ba9327593ba1087c,
         type: 3}
