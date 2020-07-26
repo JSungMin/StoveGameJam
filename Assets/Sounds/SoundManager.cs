@@ -13,6 +13,7 @@ public class SoundManager : SingletonGameObject<SoundManager>
     public AudioClip Spring;
     public AudioClip DoorSound;
     public AudioClip MakeSound;
+    public AudioClip SliceSound;
     public AudioClip BGM;
 
     public void Start()
@@ -52,6 +53,11 @@ public class SoundManager : SingletonGameObject<SoundManager>
     public void PlayMakeSound()
     {
         audioSource.PlayOneShot(MakeSound);
+    }
+
+    public void PlaySliceSound()
+    {
+        audioSource.PlayOneShot(SliceSound);
     }
 
     public static void PlayBGM()
