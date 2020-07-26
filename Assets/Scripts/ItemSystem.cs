@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -43,6 +44,12 @@ public class ItemSystem : MonoBehaviour
             itemList[i].name = itemList[i].itemType.ToString();
         }
         ItemUIObj_Reflash(true);
+    }
+
+    private void Update()
+    {
+        int sceneidx = SceneManager.GetActiveScene().buildIndex;
+        itemUILayout.SetActive(4 <= sceneidx && sceneidx <= 6);
     }
 
     public void CanUseItem(List<Item> _list)

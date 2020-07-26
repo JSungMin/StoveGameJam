@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class StageStartSetting_GoalDoor : MonoBehaviour
 {
+    bool active = false;
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if ( !active && other.gameObject.tag == "Player")
         {
-            ClearUI.instance.ClearUIOpen();
-            StageStartSetting.instance.NextStage();
+            active = true;
+            StartCoroutine(ClearCoroutine());
         }
+    }
+
+    IEnumerator ClearCoroutine()
+    {
+        ClearUI.instance.ClearUIOpen();
+        yield return new WaitForSeconds(2);
+        ClearUI.instance.ClearUIOpen(false);
+        StageStartSetting.instance.NextStage();
     }
 }
