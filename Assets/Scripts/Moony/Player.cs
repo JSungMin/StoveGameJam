@@ -91,6 +91,6 @@ public class Player : MonoBehaviour
     }
     private void OnCut(CanCutObject obj)
     {
-
+        SoundManager.Instance.PlaySliceSound();
     }
 }

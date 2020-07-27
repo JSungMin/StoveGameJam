@@ -52,7 +52,7 @@ public class DebriObject : MonoBehaviour
             }
             yield return null;
         }
-        OnFadeOut();
         yield return null;
+        OnFadeOut();
     }
 }

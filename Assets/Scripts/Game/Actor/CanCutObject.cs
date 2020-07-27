@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider), typeof(Animator))]
+[RequireComponent(typeof(Collider))]
 public class CanCutObject : MonoBehaviour
 {
     public GameObject refHidedObj;
@@ -16,10 +16,11 @@ public class CanCutObject : MonoBehaviour
     // Start is called before the first frame update
     private void Start() 
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         trigger = GetComponent<Collider>();
         trigger.isTrigger = true;
-        refHidedObj.SetActive(false);    
+        if(null != refHidedObj)
+            refHidedObj.SetActive(false);    
         for (var i = 0; i < refDebriObjs.Length; i++)
         {
             refDebriObjs[i].SetActive(false);
@@ -29,16 +30,19 @@ public class CanCutObject : MonoBehaviour
     {
         if(isCut) return;
         animator.Play(cutAnim);
-        refHidedObj.SetActive(true);
+        if(null != refHidedObj)
+            refHidedObj?.SetActive(true);
+        trigger.enabled = false;
         for(var i = 0; i < refDebriObjs.Length; i++)
         {
-            var target = refDebriObjs[i];
-            target.SetActive(true);
-            var tRigid = target.GetComponent<Rigidbody>();
+            var instance = Instantiate(refDebriObjs[i], transform.position, Quaternion.identity);
+            instance.SetActive(true);
+            var tRigid = instance.GetComponent<Rigidbody>();
             if(null == tRigid) continue;
-            var dir = (target.transform.position - player.gameObject.transform.position).normalized;
+            var dir = (instance.transform.position - player.gameObject.transform.position).normalized;
             tRigid.AddForce(explosionPower * dir, ForceMode.Impulse);
         }
+        gameObject.SetActive(false);
     }
     
 }
