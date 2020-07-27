@@ -17,9 +17,11 @@ public class StageStartSetting_GoalDoor : MonoBehaviour
 
     IEnumerator ClearCoroutine()
     {
+        DefaultUI.instance.canGameOver = false;
         ClearUI.instance.ClearUIOpen();
         yield return new WaitForSeconds(2);
         ClearUI.instance.ClearUIOpen(false);
         StageStartSetting.instance.NextStage();
+        DefaultUI.instance.canGameOver = true;
     }
 }
