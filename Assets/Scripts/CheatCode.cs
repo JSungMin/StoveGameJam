@@ -26,6 +26,10 @@ public class CheatCode : MonoBehaviour
         {
             SceneManager.LoadScene("Scene03");
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SceneManager.LoadScene("Ending");
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             FindObjectOfType<ItemSystem>().ItemGet(Item.ink, 1000);
